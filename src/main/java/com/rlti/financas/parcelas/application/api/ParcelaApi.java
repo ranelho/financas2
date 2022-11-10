@@ -1,0 +1,30 @@
+package com.rlti.financas.parcelas.application.api;
+
+import com.rlti.financas.despesas.domain.Despesa;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
+import java.util.UUID;
+
+@RestController
+@RequestMapping("/v2/despesa/{idDespesa}/parcelas")
+public interface ParcelaApi {
+    @PostMapping
+    @ResponseStatus(code = HttpStatus.CREATED)
+    ParcelaIdResponse postParcela(@Valid @RequestBody Despesa despesa, ParcelaRequest parcelaRequest);
+
+    @GetMapping(value = "/parcelas-despesa")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<ParcelaListResponse> getTodasParcelasDespesa(@RequestParam UUID idDespesa);
+
+  /*  @PostMapping(value = "/pago")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    void situacaoPago(@RequestParam UUID idDespesa);
+
+    @PostMapping(value = "/aPagar")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    void situacaoAPagar(@RequestParam UUID idDespesa)
+   ;*/
+}
