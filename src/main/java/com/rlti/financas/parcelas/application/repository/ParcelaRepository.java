@@ -8,4 +8,5 @@ import java.util.UUID;
 public interface ParcelaRepository {
     Parcela salva(Parcela parcela);
     List<Parcela> buscaParcelasDespesa(UUID idDespesa);
+    List<Parcela> buscaParcelas();
 }

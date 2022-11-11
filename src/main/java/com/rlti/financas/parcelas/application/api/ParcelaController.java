@@ -31,6 +31,14 @@ public class ParcelaController implements ParcelaApi {
         return parcelas;
     }
 
+    @Override
+    public List<ParcelaListResponse> getTodasParcelas() {
+        log.info("[inicia] ParcelaController - getTodasParcelas");
+        List<ParcelaListResponse> parcelas = parcelaService.getParcelas();
+        log.info("[finaliza] ParcelaController - getTodasParcelas");
+        return parcelas;
+    }
+
 
 
    /* @Override

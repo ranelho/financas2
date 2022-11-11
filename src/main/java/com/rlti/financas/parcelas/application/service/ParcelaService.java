@@ -11,4 +11,5 @@ import java.util.UUID;
 public interface ParcelaService {
     ParcelaIdResponse criarParcela(Despesa despesa, ParcelaRequest parcelaRequest);
     List<ParcelaListResponse> getParcelasDespesaPorId(UUID idDespesa);
+    List<ParcelaListResponse> getParcelas();
 }

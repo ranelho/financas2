@@ -30,4 +30,12 @@ public class ParcelaInfraRepository implements ParcelaRepository {
         log.info("[finaliza] ParcelaInfraRepository - buscaParcelasDespesa");
         return parcelas;
     }
+
+    @Override
+    public List<Parcela> buscaParcelas() {
+        log.info("[inicia] ParcelaInfraRepository - buscaParcelasDespesa");
+        List<Parcela> parcelas = parcelaSpringDataJPARepository.findAll();
+        log.info("[finaliza] ParcelaInfraRepository - buscaParcelasDespesa");
+        return parcelas;
+    }
 }

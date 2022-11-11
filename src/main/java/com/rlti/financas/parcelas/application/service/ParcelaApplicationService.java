@@ -38,4 +38,12 @@ public class ParcelaApplicationService implements ParcelaService {
         log.info("[finalzia] ParcelaApplicationService - getparcelasDespesaPorId");
         return ParcelaListResponse.converte(parcelas);
     }
+
+    @Override
+    public List<ParcelaListResponse> getParcelas() {
+        log.info("[inicia] ParcelaApplicationService - getParcelas");
+        List<Parcela> parcelas = parcelaRepository.buscaParcelas();
+        log.info("[finalzia] ParcelaApplicationService - getParcelas");
+        return ParcelaListResponse.converte(parcelas);
+    }
 }
