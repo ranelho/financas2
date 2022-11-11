@@ -39,7 +39,6 @@ public class Parcela {
     @JoinColumn(name = "despesa_id")
     private Despesa despesa;
 
-
     public Parcela(Despesa despesa, ParcelaRequest parcelaRequest) {
         this.idParcela = UUID.randomUUID();
         this.descricao = parcelaRequest.getDescricao();
