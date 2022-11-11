@@ -34,8 +34,8 @@ public class ParcelaApplicationService implements ParcelaService {
     @Override
     public List<ParcelaListResponse> getParcelasDespesaPorId(UUID idDespesa) {
         log.info("[inicia] ParcelaApplicationService - getparcelasDespesaPorId");
-        List<ParcelaListResponse> parcelas = parcelaRepository.buscaParcelasDespesa(idDespesa);
+        List<Parcela> parcelas = parcelaRepository.buscaParcelasDespesa(idDespesa);
         log.info("[finalzia] ParcelaApplicationService - getparcelasDespesaPorId");
-        return null;
+        return ParcelaListResponse.converte(parcelas);
     }
 }

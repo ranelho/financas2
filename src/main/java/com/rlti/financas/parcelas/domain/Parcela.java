@@ -36,6 +36,7 @@ public class Parcela {
     @Enumerated(EnumType.STRING)
     private Situacao situacao = Situacao.A_PAGAR ;
     @ManyToOne
+    @JoinColumn(name = "despesa_id")
     private Despesa despesa;
 
 

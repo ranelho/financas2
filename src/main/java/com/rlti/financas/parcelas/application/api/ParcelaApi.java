@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/v2/despesa/{idDespesa}/parcelas")
+@RequestMapping("/v2/parcelas")
 public interface ParcelaApi {
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
@@ -18,6 +18,10 @@ public interface ParcelaApi {
     @GetMapping(value = "/parcelas-despesa")
     @ResponseStatus(code = HttpStatus.OK)
     List<ParcelaListResponse> getTodasParcelasDespesa(@RequestParam UUID idDespesa);
+
+    @GetMapping(value = "/allParcelas")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<ParcelaListResponse> getTodasParcelas();
 
   /*  @PostMapping(value = "/pago")
     @ResponseStatus(code = HttpStatus.CREATED)
