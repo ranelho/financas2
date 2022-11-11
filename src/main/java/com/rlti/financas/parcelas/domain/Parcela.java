@@ -50,10 +50,8 @@ public class Parcela {
         this.despesa = despesa;
     }
 
-    public void pago(UUID idDespesa) {
+    public void pago() {
 		this.situacao = Situacao.PAGO;
     }
-    public void aPagar(UUID idDespesa) {
-        this.situacao = Situacao.A_PAGAR;
-	}
+    public void aPagar() {this.situacao = Situacao.A_PAGAR;	}
 }

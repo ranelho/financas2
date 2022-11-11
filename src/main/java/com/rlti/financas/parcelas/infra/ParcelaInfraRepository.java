@@ -7,6 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -37,5 +38,13 @@ public class ParcelaInfraRepository implements ParcelaRepository {
         List<Parcela> parcelas = parcelaSpringDataJPARepository.findAll();
         log.info("[finaliza] ParcelaInfraRepository - buscaParcelasDespesa");
         return parcelas;
+    }
+
+    @Override
+    public Optional<Parcela> getParcela(UUID idParcela) {
+        log.info("[inicia] ParcelaInfraRepository - getParcela");
+        Optional<Parcela> parcela = parcelaSpringDataJPARepository.findById(idParcela);
+        log.info("[finaliza] ParcelaInfraRepository - getParcela");
+        return parcela;
     }
 }

@@ -23,12 +23,15 @@ public interface ParcelaApi {
     @ResponseStatus(code = HttpStatus.OK)
     List<ParcelaListResponse> getTodasParcelas();
 
-  /*  @PostMapping(value = "/pago")
+    @GetMapping(value = "/{idParcela}")
+    @ResponseStatus(code = HttpStatus.OK)
+    ParcelaDetalhadoResponse getParcelaAtravesId(@PathVariable UUID idParcela);
+
+    @PostMapping(value = "/pago")
     @ResponseStatus(code = HttpStatus.CREATED)
-    void situacaoPago(@RequestParam UUID idDespesa);
+    void situacaoPago(@RequestParam UUID idParcela);
 
     @PostMapping(value = "/aPagar")
     @ResponseStatus(code = HttpStatus.CREATED)
-    void situacaoAPagar(@RequestParam UUID idDespesa)
-   ;*/
+    void situacaoAPagar(@RequestParam UUID idParcela);
 }

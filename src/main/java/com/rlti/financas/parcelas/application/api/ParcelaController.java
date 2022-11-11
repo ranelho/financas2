@@ -2,6 +2,7 @@ package com.rlti.financas.parcelas.application.api;
 
 import com.rlti.financas.despesas.domain.Despesa;
 import com.rlti.financas.parcelas.application.service.ParcelaService;
+import com.rlti.financas.parcelas.domain.Parcela;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,19 +40,25 @@ public class ParcelaController implements ParcelaApi {
         return parcelas;
     }
 
-
-
-   /* @Override
-    public void situacaoPago(UUID idDespesa) {
+    @Override
+    public ParcelaDetalhadoResponse getParcelaAtravesId(UUID idParcela) {
+        log.info("[inicia] ParcelaController - getParcelaAtravesId");
+        Parcela parcela = parcelaService.getPacerla(idParcela);
+        log.info("[finaliza] ParcelaController - getParcelaAtravesId");
+        return new ParcelaDetalhadoResponse(parcela);
+    }
+    @Override
+    public void situacaoPago(UUID idParcela) {
         log.info("[inicia] ParcelaController - situacaoPago");
-        parcelaService.situacaoPago(idDespesa);
+        Parcela parcela = parcelaService.getPacerla(idParcela);
+        parcelaService.situacaoPago(parcela);
         log.info("[finaliza] ParcelaController - situacaoPago");
     }
-
     @Override
-    public void situacaoAPagar(UUID idDespesa) {
+    public void situacaoAPagar(UUID idParcela) {
         log.info("[inicia] ParcelaController - situacaoAPagar");
-        parcelaService.situacaoAPagar(idDespesa);
+        Parcela parcela = parcelaService.getPacerla(idParcela);
+        parcelaService.situacaoAPagar(parcela);
         log.info("[finaliza] ParcelaController - situacaoAPagar");
-    }*/
+    }
 }
