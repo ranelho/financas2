@@ -24,7 +24,6 @@ public class ParcelaController implements ParcelaApi {
         log.info("[finaliza] ParcelaController - postParcela");
         return parcelaCriada;
     }
-
     @Override
     public List<ParcelaListResponse> getTodasParcelasDespesa(UUID idDespesa) {
         log.info("[inicia] ParcelaController - getTodasParcelasDespesa");
@@ -32,7 +31,6 @@ public class ParcelaController implements ParcelaApi {
         log.info("[finaliza] ParcelaController - getTodasParcelasDespesa");
         return parcelas;
     }
-
     @Override
     public List<ParcelaListResponse> getTodasParcelas() {
         log.info("[inicia] ParcelaController - getTodasParcelas");
@@ -40,7 +38,6 @@ public class ParcelaController implements ParcelaApi {
         log.info("[finaliza] ParcelaController - getTodasParcelas");
         return parcelas;
     }
-
     @Override
     public ParcelaDetalhadoResponse getParcelaAtravesId(UUID idParcela) {
         log.info("[inicia] ParcelaController - getParcelaAtravesId");
@@ -62,7 +59,6 @@ public class ParcelaController implements ParcelaApi {
         parcelaService.situacaoAPagar(parcela);
         log.info("[finaliza] ParcelaController - situacaoAPagar");
     }
-
     @Override
     public List<ParcelaListResponse> getDespesasPorPeriodo(LocalDate dataInicial, LocalDate dataFinal) {
         log.info("[inicia] ParcelaController - getDespesasPorPeriodo");

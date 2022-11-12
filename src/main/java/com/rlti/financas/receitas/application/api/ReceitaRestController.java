@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -44,5 +45,13 @@ public class ReceitaRestController implements ReceitaApi {
         Receita receita = receitaService.detalhaReceita(idReceita);
         log.info("[finaliza] ReceitaRestController - detalhaReceita");
         return new ReceitaDetalhadoResponse(receita);
+    }
+
+    @Override
+    public List<ReceitaListResponse> getReceitasPorPeriodo(LocalDate dataInicial, LocalDate dataFinal) {
+        log.info("[incicia] ReceitaRestController - getReceitasPorPeriodo");
+        List<ReceitaListResponse> receitas = receitaService.receitasPeriodo(dataInicial, dataFinal);
+        log.info("[finaliza] ReceitaRestController - getReceitasPorPeriodo");
+        return receitas;
     }
 }

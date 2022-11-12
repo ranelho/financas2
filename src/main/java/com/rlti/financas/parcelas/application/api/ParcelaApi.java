@@ -36,6 +36,7 @@ public interface ParcelaApi {
     @PostMapping(value = "/aPagar")
     @ResponseStatus(code = HttpStatus.CREATED)
     void situacaoAPagar(@RequestParam UUID idParcela);
+
     @GetMapping(value = "/periodo/{dataInicial},{dataFinal}")
     @ResponseStatus(code = HttpStatus.OK)
     List<ParcelaListResponse> getDespesasPorPeriodo(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataInicial,

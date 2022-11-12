@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -45,5 +46,13 @@ public class ReceitaInfraRepository implements ReceitaRepository {
         Optional<Receita> receitaPorId = receitaSpringDataJPARepository.findById(idReceita);
         log.info("[finaliza] - ReceitaInfraRepository - buscaReceitaPorId");
         return receitaPorId;
+    }
+
+    @Override
+    public List<Receita> receitasPeriodo(LocalDate dataInicial, LocalDate dataFinal) {
+        log.info("[inicia] - ReceitaInfraRepository - receitasPeriodo");
+        List<Receita> receitas = receitaSpringDataJPARepository.findReceitasPeriodo(dataInicial, dataFinal);
+        log.info("[finaliza] - ReceitaInfraRepository - receitasPeriodo");
+        return receitas;
     }
 }

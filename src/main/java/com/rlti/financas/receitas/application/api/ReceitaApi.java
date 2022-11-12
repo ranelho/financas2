@@ -1,6 +1,5 @@
 package com.rlti.financas.receitas.application.api;
 
-import com.rlti.financas.despesas.application.api.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -28,4 +27,9 @@ public interface ReceitaApi {
     @GetMapping("detalha-receita/{idReceita}")
     @ResponseStatus(code = HttpStatus.OK)
     ReceitaDetalhadoResponse detalhaReceita(@PathVariable UUID idReceita);
+
+    @GetMapping(value = "/periodo/{dataInicial},{dataFinal}")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<ReceitaListResponse> getReceitasPorPeriodo(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataInicial,
+                                                    @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataFinal);
 }

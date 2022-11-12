@@ -11,6 +11,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -51,5 +52,13 @@ public class ReceitaApplicationService implements ReceitaService {
                 .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Receita não encontrada!"));
         log.info("[finaliza] ReceitaApplicationService - detalhaReceita");
         return receita;
+    }
+
+    @Override
+    public List<ReceitaListResponse> receitasPeriodo(LocalDate dataInicial, LocalDate dataFinal) {
+        log.info("[inicial] ReceitaApplicationService - receitasPeriodo");
+        List<Receita> receitas = receitaRepository.receitasPeriodo(dataInicial, dataFinal);
+        log.info("[finalisa] ReceitaApplicationService - receitasPeriodo");
+        return ReceitaListResponse.converte(receitas);
     }
 }
