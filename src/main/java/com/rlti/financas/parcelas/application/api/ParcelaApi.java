@@ -1,10 +1,12 @@
 package com.rlti.financas.parcelas.application.api;
 
 import com.rlti.financas.despesas.domain.Despesa;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -34,4 +36,9 @@ public interface ParcelaApi {
     @PostMapping(value = "/aPagar")
     @ResponseStatus(code = HttpStatus.CREATED)
     void situacaoAPagar(@RequestParam UUID idParcela);
+    @GetMapping(value = "/periodo/{dataInicial},{dataFinal}")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<ParcelaListResponse> getDespesasPorPeriodo(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataInicial,
+                                                    @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataFinal);
+
 }

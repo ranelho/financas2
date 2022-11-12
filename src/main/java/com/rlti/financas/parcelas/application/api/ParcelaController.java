@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -60,5 +61,13 @@ public class ParcelaController implements ParcelaApi {
         Parcela parcela = parcelaService.getPacerla(idParcela);
         parcelaService.situacaoAPagar(parcela);
         log.info("[finaliza] ParcelaController - situacaoAPagar");
+    }
+
+    @Override
+    public List<ParcelaListResponse> getDespesasPorPeriodo(LocalDate dataInicial, LocalDate dataFinal) {
+        log.info("[inicia] ParcelaController - getDespesasPorPeriodo");
+        List<ParcelaListResponse> parcelas = parcelaService.buscaParcelasPeriodo(dataInicial,dataFinal);
+        log.info("[finaliza] ParcelaController - getDespesasPorPeriodo");
+        return parcelas;
     }
 }

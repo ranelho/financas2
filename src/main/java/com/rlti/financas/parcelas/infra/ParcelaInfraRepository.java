@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -46,5 +47,13 @@ public class ParcelaInfraRepository implements ParcelaRepository {
         Optional<Parcela> parcela = parcelaSpringDataJPARepository.findById(idParcela);
         log.info("[finaliza] ParcelaInfraRepository - getParcela");
         return parcela;
+    }
+
+    @Override
+    public List<Parcela> buscaParcelasPeriodo(LocalDate dataInicial, LocalDate dataFinal) {
+        log.info("[inicia] ParcelaInfraRepository - buscaParcelasPeriodo");
+        List<Parcela> parcelas = parcelaSpringDataJPARepository.findPeriodo(dataInicial, dataFinal);
+        log.info("[finaliza] ParcelaInfraRepository - buscaParcelasPeriodo");
+        return parcelas;
     }
 }

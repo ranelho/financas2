@@ -13,6 +13,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -68,5 +69,13 @@ public class ParcelaApplicationService implements ParcelaService {
         parcela.pago();
         parcelaRepository.salva(parcela);
         log.info("[finalzia] ParcelaApplicationService - situacaoPago");
+    }
+
+    @Override
+    public List<ParcelaListResponse> buscaParcelasPeriodo(LocalDate dataInicial, LocalDate dataFinal) {
+        log.info("[inicia] ParcelaApplicationService - buscaParcelasPeriodo");
+        List<Parcela> parcelas = parcelaRepository.buscaParcelasPeriodo(dataInicial, dataFinal);
+        log.info("[finaliza] ParcelaApplicationService - buscaParcelasPeriodo");
+        return ParcelaListResponse.converte(parcelas);
     }
 }
