@@ -18,7 +18,6 @@ import java.util.List;
 public class ContaApplicationService implements ContaService {
     private final ParcelaRepository parcelaRepository;
     private final ReceitaRepository receitaRepository;
-    //Contas contas = new Contas();
     @Override
     public Contas listSaldo(LocalDate dataInicial, LocalDate dataFinal) {
         log.info("[inicia] ParcelaApplicationService - listSaldo");

@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -29,24 +28,19 @@ public class DespesaApplicationService implements DespesaService {
 	private final DespesaRepository despesaRepository;
 	private final ParcelaRepository parcelaRepository;
 
-	String statusParcela;
-	List<Parcela> parcelas = new ArrayList<>();
 	@Override
 	public DespesaResponse criaDespesa(DespesaRequest despesaRequest, ParcelaRequest parcelaRequest) {
 		log.info("[inicia] - DespesaApplicationService - criaDespesa");
 		Despesa despesa = despesaRepository.salva(new Despesa(despesaRequest));
 		double valorParcela = despesaRequest.getValorTotal() / despesaRequest.getQuantidadeParcelas();
 		for (int count = 1; count <= despesaRequest.getQuantidadeParcelas(); count++) {
-			statusParcela = count + "/" + despesaRequest.getQuantidadeParcelas();
+			String statusParcela = count + "/" + despesaRequest.getQuantidadeParcelas();
 			parcelaRequest.setValorParcela(valorParcela);
 			parcelaRequest.setDataParcela(ValidaMes.validaMes(despesaRequest.getDataPagamento(), count));
 			parcelaRequest.setDescricao(despesaRequest.getDescricao());
 			parcelaRequest.setQuantidadeParcelas(statusParcela);
 			parcelaRepository.salva(new Parcela(despesa,parcelaRequest));
-		//	parcelas.add(new Parcela(parcelaRequest));
 		}
-		//despesaRequest.setParecelas(parcelas);
-
 		log.info("[finaliza] - DespesaApplicationService - criaDespesa");
 		return DespesaResponse.builder().idDespesa(despesa.getIdDespesa()).build();
 	}
@@ -65,9 +59,10 @@ public class DespesaApplicationService implements DespesaService {
 
 	@Override
 	public void deletaDespesaAtravesId(UUID idDespesa) {
-		log.info("[inicia] DespesaApplicationService");
+		log.info("[inicia] DespesaApplicationService - deletaDespesaAtravesId");
 		buscaDespesaAtravesId(idDespesa);
 		despesaRepository.deletaDespesa(idDespesa);
+		log.info("[finaliza] DespesaApplicationService - deletaDespesaAtravesId");
 	}
 
 	@Override
@@ -96,7 +91,7 @@ public class DespesaApplicationService implements DespesaService {
 	public List<DespesaListResponse> buscaTodasDespesasPeriodo(LocalDate dataInicial, LocalDate dataFinal) {
 		log.info("[inicia] - DespesaApplicationService - buscaTodasDespesasPeriodo");
 		List<Despesa> despesas = despesaRepository.buscaTodasDespesaPeriodo(dataInicial, dataFinal);
-		log.info("[final] - DespesaApplicationService - buscaTodasDespesasPeriodo");
+		log.info("[finaliza] - DespesaApplicationService - buscaTodasDespesasPeriodo");
 		if (despesas.isEmpty()) {
 			throw APIException.build(HttpStatus.NOT_FOUND, "Nenhuma despesa econtrada!");
 		} else {

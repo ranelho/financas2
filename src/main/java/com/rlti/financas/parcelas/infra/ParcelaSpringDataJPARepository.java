@@ -11,6 +11,7 @@ import java.util.UUID;
 public interface ParcelaSpringDataJPARepository extends JpaRepository<Parcela, UUID> {
     @Query(value = "SELECT * FROM parcela WHERE despesa_id = ?1 ", nativeQuery = true)
     List<Parcela> findAllByIdDespesa(UUID idDespesa);
+
     @Query(value = "SELECT * FROM parcela WHERE data_parcela >= ?1 and data_parcela <= ?2 ", nativeQuery = true)
     List<Parcela> findPeriodo(LocalDate dataInicial, LocalDate dataFinal);
 
