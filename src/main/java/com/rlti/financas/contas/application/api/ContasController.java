@@ -24,9 +24,9 @@ public class ContasController implements ContasApi {
     @Override
     public Contas getSaldoAnual(int year) {
         log.info("[inicia] ParcelaController - getSaldoAnual");
-        log.info("{}", year);
+        Contas contas = contaService.listSaldoAnual(year);
         log.info("[inicia] ParcelaController - getSaldoAnual");
-        return null;
+        return contas;
     }
 
 

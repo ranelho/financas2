@@ -6,4 +6,5 @@ import java.time.LocalDate;
 
 public interface ContaService {
     Contas listSaldo(LocalDate dataInicial, LocalDate dataFinal);
+    Contas listSaldoAnual(int year);
 }

@@ -28,4 +28,14 @@ public class ContaApplicationService implements ContaService {
         log.info("[finaliza] ParcelaApplicationService - listSaldo");
         return contas;
     }
+
+    @Override
+    public Contas listSaldoAnual(int year) {
+        log.info("[inicia] ParcelaApplicationService - listSaldoAnual");
+        List<Receita> receitas = receitaRepository.buscaReceitaAnual(year);
+        List<Parcela> parcelas = parcelaRepository.buscaParcelasAno(year);
+        Contas contas = new Contas(parcelas,receitas);
+        log.info("[finaliza] ParcelaApplicationService - listSaldoAnual");
+        return contas;
+    }
 }
