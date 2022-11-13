@@ -1,4 +1,4 @@
-package com.rlti.financas.contas.service;
+package com.rlti.financas.contas.application.service;
 
 import com.rlti.financas.contas.domain.Contas;
 

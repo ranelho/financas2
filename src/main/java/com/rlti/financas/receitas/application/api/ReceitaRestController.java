@@ -54,4 +54,12 @@ public class ReceitaRestController implements ReceitaApi {
         log.info("[finaliza] ReceitaRestController - getReceitasPorPeriodo");
         return receitas;
     }
+
+    @Override
+    public List<ReceitaListResponse> getReceitaAnual(int year) {
+        log.info("[incicia] ReceitaRestController - getReceitaAnual");
+        List<ReceitaListResponse> receitas = receitaService.getReceitasAnual(year);
+        log.info("[finaliza] ReceitaRestController - getReceitaAnual");
+        return receitas;
+    }
 }

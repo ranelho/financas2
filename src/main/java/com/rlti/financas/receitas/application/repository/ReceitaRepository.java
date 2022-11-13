@@ -13,4 +13,5 @@ public interface ReceitaRepository {
     void deleta(UUID idReceita);
     Optional<Receita> buscaReceitaPorId(UUID idReceita);
     List<Receita> receitasPeriodo(LocalDate dataInicial, LocalDate dataFinal);
+    List<Receita> buscaReceitaAnual(int year);
 }

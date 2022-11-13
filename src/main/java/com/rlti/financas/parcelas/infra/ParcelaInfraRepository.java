@@ -56,4 +56,12 @@ public class ParcelaInfraRepository implements ParcelaRepository {
         log.info("[finaliza] ParcelaInfraRepository - buscaParcelasPeriodo");
         return parcelas;
     }
+
+    @Override
+    public List<Parcela> buscaParcelasAno(int year) {
+        log.info("[inicia] ParcelaInfraRepository - buscaParcelasAno");
+        List<Parcela> parcelas = parcelaSpringDataJPARepository.findAllYear(year);
+        log.info("[inicia] ParcelaInfraRepository - buscaParcelasAno");
+        return parcelas;
+    }
 }

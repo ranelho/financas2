@@ -61,4 +61,12 @@ public class ReceitaApplicationService implements ReceitaService {
         log.info("[finalisa] ReceitaApplicationService - receitasPeriodo");
         return ReceitaListResponse.converte(receitas);
     }
+
+    @Override
+    public List<ReceitaListResponse> getReceitasAnual(int year) {
+        log.info("[inicial] ReceitaApplicationService - getReceitasAnual");
+        List<Receita> receitas = receitaRepository.buscaReceitaAnual(year);
+        log.info("[finaliza] ReceitaApplicationService - getReceitasAnual");
+        return ReceitaListResponse.converte(receitas);
+    }
 }

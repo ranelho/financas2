@@ -66,4 +66,12 @@ public class ParcelaController implements ParcelaApi {
         log.info("[finaliza] ParcelaController - getDespesasPorPeriodo");
         return parcelas;
     }
+
+    @Override
+    public List<ParcelaListResponse> getParcelasAnual(int year) {
+        log.info("[inicia] ParcelaController - getParcelasAnual");
+        List<ParcelaListResponse> parcelas = parcelaService.buscaParcelasAnual(year);
+        log.info("[finaliza] ParcelaController - getParcelasAnual");
+        return parcelas;
+    }
 }

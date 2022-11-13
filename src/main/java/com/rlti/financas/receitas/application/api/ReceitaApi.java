@@ -32,4 +32,8 @@ public interface ReceitaApi {
     @ResponseStatus(code = HttpStatus.OK)
     List<ReceitaListResponse> getReceitasPorPeriodo(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataInicial,
                                                     @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataFinal);
+
+    @GetMapping(value = "/year")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<ReceitaListResponse> getReceitaAnual(@RequestParam int year);
 }

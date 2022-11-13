@@ -55,4 +55,12 @@ public class ReceitaInfraRepository implements ReceitaRepository {
         log.info("[finaliza] - ReceitaInfraRepository - receitasPeriodo");
         return receitas;
     }
+
+    @Override
+    public List<Receita> buscaReceitaAnual(int year) {
+        log.info("[inicia] - ReceitaInfraRepository - buscaReceitaAnual");
+        List<Receita> receitas = receitaSpringDataJPARepository.findAllReceitaYear(year);
+        log.info("[finaliza] - ReceitaInfraRepository - buscaReceitaAnual");
+        return receitas;
+    }
 }

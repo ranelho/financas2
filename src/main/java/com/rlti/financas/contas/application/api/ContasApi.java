@@ -15,5 +15,7 @@ public interface ContasApi {
     Contas getSaldoPeriodo(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataInicial,
                            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataFinal);
 
-
+    @GetMapping(value = "/year")
+    @ResponseStatus(code = HttpStatus.OK)
+    Contas getSaldoAnual(@RequestParam int year);
 }

@@ -13,4 +13,7 @@ public interface ParcelaSpringDataJPARepository extends JpaRepository<Parcela, U
     List<Parcela> findAllByIdDespesa(UUID idDespesa);
     @Query(value = "SELECT * FROM parcela WHERE data_parcela >= ?1 and data_parcela <= ?2 ", nativeQuery = true)
     List<Parcela> findPeriodo(LocalDate dataInicial, LocalDate dataFinal);
+
+    @Query(value = "SELECT * FROM parcela WHERE YEAR(data_parcela) = ?1 ", nativeQuery = true)
+    List<Parcela> findAllYear(int year);
 }

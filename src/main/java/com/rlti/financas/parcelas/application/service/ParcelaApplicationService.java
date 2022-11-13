@@ -78,4 +78,12 @@ public class ParcelaApplicationService implements ParcelaService {
         log.info("[finaliza] ParcelaApplicationService - buscaParcelasPeriodo");
         return ParcelaListResponse.converte(parcelas);
     }
+
+    @Override
+    public List<ParcelaListResponse> buscaParcelasAnual(int year) {
+        log.info("[inicia] ParcelaApplicationService - buscaParcelasAnual");
+        List<Parcela> parcelas = parcelaRepository.buscaParcelasAno(year);
+        log.info("[finaliza] ParcelaApplicationService - buscaParcelasAnual");
+        return ParcelaListResponse.converte(parcelas);
+    }
 }

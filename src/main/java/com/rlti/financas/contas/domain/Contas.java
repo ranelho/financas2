@@ -36,5 +36,4 @@ public class Contas {
                 .mapToDouble(Receita::getValor)
                 .sum();
     }
-
 }

@@ -42,4 +42,7 @@ public interface ParcelaApi {
     List<ParcelaListResponse> getDespesasPorPeriodo(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataInicial,
                                                     @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataFinal);
 
+    @GetMapping(value = "/year")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<ParcelaListResponse> getParcelasAnual(@RequestParam int year);
 }

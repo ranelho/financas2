@@ -18,4 +18,5 @@ public interface ParcelaService {
     void situacaoAPagar(Parcela parcela);
     void situacaoPago(Parcela parcela);
     List<ParcelaListResponse> buscaParcelasPeriodo(LocalDate dataInicial, LocalDate dataFinal);
+    List<ParcelaListResponse> buscaParcelasAnual(int year);
 }
