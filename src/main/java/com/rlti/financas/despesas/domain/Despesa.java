@@ -40,7 +40,7 @@ public class Despesa {
 	private int quantidadeParcelas;
 	@NotNull
 	private Double valorTotal;
-	@OneToMany(mappedBy="despesa", cascade= CascadeType.ALL)
+	@OneToMany(mappedBy="despesa", cascade = CascadeType.ALL)
 	private List<Parcela> parcelas;
 
 	public Despesa(DespesaRequest despesaRequest) {
@@ -52,8 +52,10 @@ public class Despesa {
 		this.valorTotal = despesaRequest.getValorTotal();
 	}
 	public void altera(@Valid DespesaAlteracaoRequest despesaAlteracaoRequest) {
+		this.descricao = despesaAlteracaoRequest.getDescricao();
 		this.categoria = despesaAlteracaoRequest.getCategoria();
-		this.quantidadeParcelas = despesaAlteracaoRequest.getParcelas();
-		this.valorTotal = despesaAlteracaoRequest.getValor();
+		this.quantidadeParcelas = despesaAlteracaoRequest.getQuantidadeParcelas();
+		this.dataPagamento = despesaAlteracaoRequest.getDataPagamento();
+		this.valorTotal = despesaAlteracaoRequest.getValorTotal();
 	}
 }

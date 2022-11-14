@@ -12,9 +12,9 @@ public class DespesaAlteracaoRequest {
 	private String descricao;
 	@NotNull
 	private Categoria categoria;
-	private int parcelas;
+	private int quantidadeParcelas;
 	@NotNull
 	private LocalDate dataPagamento;
 	@NotNull
-	private Double valor;
+	private Double valorTotal;
 }

@@ -20,6 +20,6 @@ public class DespesaRequest {
 	private LocalDate dataPagamento;
 	private int quantidadeParcelas;
 	private Double valorTotal;
-	private List<Parcela> parecelas;
+	private List<Parcela> parcelas;
 }
 

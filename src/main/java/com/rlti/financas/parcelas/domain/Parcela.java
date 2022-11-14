@@ -54,6 +54,17 @@ public class Parcela {
         this.despesa = despesa;
     }
 
+    public Parcela(ParcelaRequest parcelaRequest) {
+        this.idParcela = UUID.randomUUID();
+        this.categoria = parcelaRequest.getCategoria();
+        this.descricao = parcelaRequest.getDescricao();
+        this.quantidadeParcelas = parcelaRequest.getQuantidadeParcelas();
+        this.valorParcela = parcelaRequest.getValorParcela();
+        this.dataParcela = parcelaRequest.getDataParcela();
+        this.situacao = Situacao.A_PAGAR;
+        this.despesa = despesa;
+    }
+
     public void pago() {
 		this.situacao = Situacao.PAGO;
     }
