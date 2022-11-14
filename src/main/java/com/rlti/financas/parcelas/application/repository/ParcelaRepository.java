@@ -1,5 +1,6 @@
 package com.rlti.financas.parcelas.application.repository;
 
+import com.rlti.financas.despesas.domain.Categoria;
 import com.rlti.financas.parcelas.domain.Parcela;
 
 import java.time.LocalDate;
@@ -14,4 +15,5 @@ public interface ParcelaRepository {
     Optional<Parcela> getParcela(UUID idParcela);
     List<Parcela> buscaParcelasPeriodo(LocalDate dataInicial, LocalDate dataFinal);
     List<Parcela> buscaParcelasAno(int year);
+    List<Parcela> buscaCategoria(Categoria categoria, int year);
 }

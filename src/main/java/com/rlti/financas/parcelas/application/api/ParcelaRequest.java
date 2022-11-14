@@ -1,5 +1,6 @@
 package com.rlti.financas.parcelas.application.api;
 
+import com.rlti.financas.despesas.domain.Categoria;
 import com.rlti.financas.parcelas.domain.Situacao;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,6 +15,7 @@ import java.util.UUID;
 @Data
 public class ParcelaRequest {
     private UUID idParcela;
+    private Categoria categoria;
     private String descricao;
     private String quantidadeParcelas;
     private Double valorParcela;

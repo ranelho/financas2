@@ -1,5 +1,6 @@
 package com.rlti.financas.parcelas.application.api;
 
+import com.rlti.financas.despesas.domain.Categoria;
 import com.rlti.financas.despesas.domain.Despesa;
 import com.rlti.financas.parcelas.application.service.ParcelaService;
 import com.rlti.financas.parcelas.domain.Parcela;
@@ -72,6 +73,14 @@ public class ParcelaController implements ParcelaApi {
         log.info("[inicia] ParcelaController - getParcelasAnual");
         List<ParcelaListResponse> parcelas = parcelaService.buscaParcelasAnual(year);
         log.info("[finaliza] ParcelaController - getParcelasAnual");
+        return parcelas;
+    }
+
+    @Override
+    public List<ParcelaListResponse> getCategoriaAnual(Categoria categoria, int year) {
+        log.info("[inicia] ParcelaController - getCategoriaAnual");
+        List<ParcelaListResponse> parcelas = parcelaService.getCategoriaAnual(categoria, year);
+        log.info("[finaliza] ParcelaController - getCategoriaAnual");
         return parcelas;
     }
 }

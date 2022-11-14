@@ -1,5 +1,6 @@
 package com.rlti.financas.contas.domain;
 
+import com.rlti.financas.despesas.domain.Categoria;
 import com.rlti.financas.parcelas.application.api.ParcelaListResponse;
 import com.rlti.financas.parcelas.domain.Parcela;
 import com.rlti.financas.receitas.application.api.ReceitaListResponse;
@@ -16,9 +17,11 @@ import java.util.List;
 public class Contas {
     private double valorTotalReceitas;
     private double valorTotalParcelas;
+    private Categoria categoria;
     private double saldo;
     private List<ParcelaListResponse> parcelas;
     private List<ReceitaListResponse> receitas;
+
     public Contas(List<Parcela> parcelas, List<Receita> receitas) {
         this.valorTotalReceitas = somaReceitas(receitas);
         this.valorTotalParcelas = somaParcelas(parcelas);
@@ -26,6 +29,12 @@ public class Contas {
         this.parcelas = ParcelaListResponse.converte(parcelas);
         this.receitas = ReceitaListResponse.converte(receitas);
     }
+
+    public Contas(Categoria categoria, List<Parcela> parcelas) {
+        this.categoria = categoria;
+        this.valorTotalParcelas = somaParcelas(parcelas);
+    }
+
     private double somaParcelas(List<Parcela> parcelas) {
         return parcelas.stream()
                 .mapToDouble(Parcela::getValorParcela)

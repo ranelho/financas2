@@ -1,5 +1,6 @@
 package com.rlti.financas.parcelas.application.api;
 
+import com.rlti.financas.despesas.domain.Categoria;
 import com.rlti.financas.despesas.domain.Despesa;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -45,4 +46,8 @@ public interface ParcelaApi {
     @GetMapping(value = "/year")
     @ResponseStatus(code = HttpStatus.OK)
     List<ParcelaListResponse> getParcelasAnual(@RequestParam int year);
+
+    @GetMapping(value = "/categoria/year")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<ParcelaListResponse> getCategoriaAnual(@RequestParam Categoria categoria, @RequestParam int year);
 }

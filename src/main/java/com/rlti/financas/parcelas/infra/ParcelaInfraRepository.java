@@ -1,5 +1,6 @@
 package com.rlti.financas.parcelas.infra;
 
+import com.rlti.financas.despesas.domain.Categoria;
 import com.rlti.financas.parcelas.application.repository.ParcelaRepository;
 import com.rlti.financas.parcelas.domain.Parcela;
 import lombok.RequiredArgsConstructor;
@@ -63,5 +64,14 @@ public class ParcelaInfraRepository implements ParcelaRepository {
         List<Parcela> parcelas = parcelaSpringDataJPARepository.findAllYear(year);
         log.info("[inicia] ParcelaInfraRepository - buscaParcelasAno");
         return parcelas;
+    }
+
+    @Override
+    public List<Parcela> buscaCategoria(Categoria categoria, int year) {
+        log.info("[inicia] ParcelaInfraRepository - buscaSomaCategoria");
+        String categoriaString = String.valueOf(Categoria.valueOf (String.valueOf(categoria)));
+        List<Parcela> parcela = parcelaSpringDataJPARepository.findAllCategoria(categoriaString, year);
+        log.info("[finaliza] ParcelaInfraRepository - buscaSomaCategoria");
+        return parcela;
     }
 }

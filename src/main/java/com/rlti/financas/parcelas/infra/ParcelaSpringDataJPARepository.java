@@ -17,4 +17,7 @@ public interface ParcelaSpringDataJPARepository extends JpaRepository<Parcela, U
 
     @Query(value = "SELECT * FROM parcela WHERE YEAR(data_parcela) = ?1 ", nativeQuery = true)
     List<Parcela> findAllYear(int year);
-}
+
+    @Query(value = "SELECT * FROM parcela WHERE categoria = ?1 AND year(data_parcela) = ?2", nativeQuery = true)
+    List<Parcela> findAllCategoria(String categoria, int year);
+   }

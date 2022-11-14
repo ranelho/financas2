@@ -1,6 +1,7 @@
 package com.rlti.financas.parcelas.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.rlti.financas.despesas.domain.Categoria;
 import com.rlti.financas.despesas.domain.Despesa;
 import com.rlti.financas.parcelas.application.api.ParcelaRequest;
 import lombok.AccessLevel;
@@ -26,6 +27,9 @@ public class Parcela {
     @NotNull
     private String descricao;
     @NotNull
+    @Enumerated(EnumType.STRING)
+    private Categoria categoria;
+    @NotNull
     private String quantidadeParcelas;
     @NotNull
     private Double valorParcela;
@@ -41,6 +45,7 @@ public class Parcela {
 
     public Parcela(Despesa despesa, ParcelaRequest parcelaRequest) {
         this.idParcela = UUID.randomUUID();
+        this.categoria = parcelaRequest.getCategoria();
         this.descricao = parcelaRequest.getDescricao();
         this.quantidadeParcelas = parcelaRequest.getQuantidadeParcelas();
         this.valorParcela = parcelaRequest.getValorParcela();

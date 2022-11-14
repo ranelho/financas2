@@ -35,6 +35,7 @@ public class DespesaApplicationService implements DespesaService {
 		double valorParcela = despesaRequest.getValorTotal() / despesaRequest.getQuantidadeParcelas();
 		for (int count = 1; count <= despesaRequest.getQuantidadeParcelas(); count++) {
 			String statusParcela = count + "/" + despesaRequest.getQuantidadeParcelas();
+			parcelaRequest.setCategoria(despesa.getCategoria());
 			parcelaRequest.setValorParcela(valorParcela);
 			parcelaRequest.setDataParcela(ValidaMes.validaMes(despesaRequest.getDataPagamento(), count));
 			parcelaRequest.setDescricao(despesaRequest.getDescricao());

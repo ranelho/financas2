@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @RequestMapping("/v2/contas")
@@ -18,4 +19,8 @@ public interface ContasApi {
     @GetMapping(value = "/year")
     @ResponseStatus(code = HttpStatus.OK)
     Contas getSaldoAnual(@RequestParam int year);
+
+    @GetMapping(value = "/receitas-despesas-categoria")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<ContasCategoriaResponse> getReceitasDespesasCategoria(@RequestParam int year);
 }

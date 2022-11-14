@@ -1,6 +1,7 @@
 package com.rlti.financas.parcelas.application.service;
 
 import com.rlti.financas.despesas.application.repository.DespesaRepository;
+import com.rlti.financas.despesas.domain.Categoria;
 import com.rlti.financas.despesas.domain.Despesa;
 import com.rlti.financas.handler.APIException;
 import com.rlti.financas.parcelas.application.api.ParcelaIdResponse;
@@ -84,6 +85,14 @@ public class ParcelaApplicationService implements ParcelaService {
         log.info("[inicia] ParcelaApplicationService - buscaParcelasAnual");
         List<Parcela> parcelas = parcelaRepository.buscaParcelasAno(year);
         log.info("[finaliza] ParcelaApplicationService - buscaParcelasAnual");
+        return ParcelaListResponse.converte(parcelas);
+    }
+
+    @Override
+    public List<ParcelaListResponse> getCategoriaAnual(Categoria categoria, int year) {
+        log.info("[inicia] ParcelaApplicationService - getCategoriaAnual");
+        List<Parcela> parcelas = parcelaRepository.buscaCategoria(categoria,year);
+        log.info("[finaliza] ParcelaApplicationService - getCategoriaAnual");
         return ParcelaListResponse.converte(parcelas);
     }
 }

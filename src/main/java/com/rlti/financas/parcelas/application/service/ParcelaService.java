@@ -1,5 +1,6 @@
 package com.rlti.financas.parcelas.application.service;
 
+import com.rlti.financas.despesas.domain.Categoria;
 import com.rlti.financas.despesas.domain.Despesa;
 import com.rlti.financas.parcelas.application.api.ParcelaIdResponse;
 import com.rlti.financas.parcelas.application.api.ParcelaListResponse;
@@ -19,4 +20,5 @@ public interface ParcelaService {
     void situacaoPago(Parcela parcela);
     List<ParcelaListResponse> buscaParcelasPeriodo(LocalDate dataInicial, LocalDate dataFinal);
     List<ParcelaListResponse> buscaParcelasAnual(int year);
+    List<ParcelaListResponse> getCategoriaAnual(Categoria categoria, int year);
 }
