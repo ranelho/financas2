@@ -26,9 +26,9 @@ public class ParcelaController implements ParcelaApi {
         return parcelaCriada;
     }
     @Override
-    public List<ParcelaListResponse> getTodasParcelasDespesa(UUID idDespesa) {
+    public List<ParcelaListResponse> getTodasParcelasDespesa(Despesa despesa) {
         log.info("[inicia] ParcelaController - getTodasParcelasDespesa");
-        List<ParcelaListResponse> parcelas = parcelaService.getParcelasDespesaPorId(idDespesa);
+        List<ParcelaListResponse> parcelas = parcelaService.getParcelasDespesa(despesa);
         log.info("[finaliza] ParcelaController - getTodasParcelasDespesa");
         return parcelas;
     }

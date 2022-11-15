@@ -62,4 +62,11 @@ public class ReceitaRestController implements ReceitaApi {
         log.info("[finaliza] ReceitaRestController - getReceitaAnual");
         return receitas;
     }
+
+    @Override
+    public void patchAlteraReceita(UUID idReceita, ReceitaAlteracaoRequest receitaAlteracaoRequest) {
+        log.info("[incicia] ReceitaRestController - patchAlteraReceita");
+        receitaService.alteraReceita(idReceita, receitaAlteracaoRequest);
+        log.info("[finaliza] ReceitaRestController - patchAlteraReceita");
+    }
 }

@@ -2,6 +2,7 @@ package com.rlti.financas.receitas.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.rlti.financas.despesas.domain.Categoria;
+import com.rlti.financas.receitas.application.api.ReceitaAlteracaoRequest;
 import com.rlti.financas.receitas.application.api.ReceitaRequest;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -39,5 +40,12 @@ public class Receita {
         this.categoria = receitaRequest.getCategoria();
         this.dataReceita = receitaRequest.getDataReceita();
         this.valor = receitaRequest.getValor();
+    }
+
+    public void altera(ReceitaAlteracaoRequest receitaAlteracaoRequest) {
+        this.descricao = receitaAlteracaoRequest.getDescricao();
+        this.categoria = receitaAlteracaoRequest.getCategoria();
+        this.dataReceita = receitaAlteracaoRequest.getDataReceita();
+        this.valor = receitaAlteracaoRequest.getValor();
     }
 }

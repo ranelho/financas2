@@ -41,6 +41,7 @@ public class Parcela {
     private Situacao situacao = Situacao.A_PAGAR ;
     @ManyToOne
     @JoinColumn(name = "despesa_id")
+    @Type(type = "uuid-char")
     private Despesa despesa;
 
     public Parcela(Despesa despesa, ParcelaRequest parcelaRequest) {

@@ -1,6 +1,7 @@
 package com.rlti.financas.parcelas.infra;
 
 import com.rlti.financas.despesas.domain.Categoria;
+import com.rlti.financas.despesas.domain.Despesa;
 import com.rlti.financas.parcelas.application.repository.ParcelaRepository;
 import com.rlti.financas.parcelas.domain.Parcela;
 import lombok.RequiredArgsConstructor;
@@ -23,13 +24,13 @@ public class ParcelaInfraRepository implements ParcelaRepository {
         log.info("[inicia] ParcelaInfraRepository - salva");
         parcelaSpringDataJPARepository.save(parcela);
         log.info("[finaliza] ParcelaInfraRepository - salva");
-        return null;
+        return parcela;
     }
 
     @Override
-    public List<Parcela> buscaParcelasDespesa(UUID idDespesa) {
+    public List<Parcela> buscaParcelasDespesa(Despesa despesa) {
         log.info("[inicia] ParcelaInfraRepository - buscaParcelasDespesa");
-        List<Parcela> parcelas = parcelaSpringDataJPARepository.findAllByIdDespesa(idDespesa);
+        List<Parcela> parcelas = parcelaSpringDataJPARepository.findAllByDespesa(despesa);
         log.info("[finaliza] ParcelaInfraRepository - buscaParcelasDespesa");
         return parcelas;
     }

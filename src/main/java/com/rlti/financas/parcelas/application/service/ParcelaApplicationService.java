@@ -1,6 +1,5 @@
 package com.rlti.financas.parcelas.application.service;
 
-import com.rlti.financas.despesas.application.repository.DespesaRepository;
 import com.rlti.financas.despesas.domain.Categoria;
 import com.rlti.financas.despesas.domain.Despesa;
 import com.rlti.financas.handler.APIException;
@@ -23,20 +22,20 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ParcelaApplicationService implements ParcelaService {
     private final ParcelaRepository parcelaRepository;
-    private final DespesaRepository despesaRepository;
+   // private final DespesaRepository despesaRepository;
 
     @Override
     public ParcelaIdResponse criarParcela(Despesa despesa, ParcelaRequest parcelaRequest) {
         log.info("[inicia] ParcelaApplicationService - criarParcela");
         Parcela parcela = parcelaRepository.salva(new Parcela(despesa, parcelaRequest));
         log.info("[finaliza] ParcelaApplicationService - criarParcela");
-        return null;
+        return ParcelaIdResponse.builder().idParcela(parcela.getIdParcela()).build();
     }
 
     @Override
-    public List<ParcelaListResponse> getParcelasDespesaPorId(UUID idDespesa) {
+    public List<ParcelaListResponse> getParcelasDespesa(Despesa despesa) {
         log.info("[inicia] ParcelaApplicationService - getparcelasDespesaPorId");
-        List<Parcela> parcelas = parcelaRepository.buscaParcelasDespesa(idDespesa);
+        List<Parcela> parcelas = parcelaRepository.buscaParcelasDespesa(despesa);
         log.info("[finalzia] ParcelaApplicationService - getparcelasDespesaPorId");
         return ParcelaListResponse.converte(parcelas);
     }

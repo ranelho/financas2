@@ -13,7 +13,7 @@ import java.util.UUID;
 
 public interface ParcelaService {
     ParcelaIdResponse criarParcela(Despesa despesa, ParcelaRequest parcelaRequest);
-    List<ParcelaListResponse> getParcelasDespesaPorId(UUID idDespesa);
+    List<ParcelaListResponse> getParcelasDespesa(Despesa despesa);
     List<ParcelaListResponse> getParcelas();
     Parcela getPacerla(UUID idParcela);
     void situacaoAPagar(Parcela parcela);

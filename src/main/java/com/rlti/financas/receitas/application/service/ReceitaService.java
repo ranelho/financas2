@@ -1,5 +1,6 @@
 package com.rlti.financas.receitas.application.service;
 
+import com.rlti.financas.receitas.application.api.ReceitaAlteracaoRequest;
 import com.rlti.financas.receitas.application.api.ReceitaIdResponse;
 import com.rlti.financas.receitas.application.api.ReceitaListResponse;
 import com.rlti.financas.receitas.application.api.ReceitaRequest;
@@ -16,4 +17,5 @@ public interface ReceitaService {
     Receita detalhaReceita(UUID idReceita);
     List<ReceitaListResponse> receitasPeriodo(LocalDate dataInicial, LocalDate dataFinal);
     List<ReceitaListResponse> getReceitasAnual(int year);
+    void alteraReceita(UUID idReceita, ReceitaAlteracaoRequest receitaAlteracaoRequest);
 }

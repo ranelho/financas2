@@ -1,6 +1,7 @@
 package com.rlti.financas.receitas.application.service;
 
 import com.rlti.financas.handler.APIException;
+import com.rlti.financas.receitas.application.api.ReceitaAlteracaoRequest;
 import com.rlti.financas.receitas.application.api.ReceitaIdResponse;
 import com.rlti.financas.receitas.application.api.ReceitaListResponse;
 import com.rlti.financas.receitas.application.api.ReceitaRequest;
@@ -68,5 +69,15 @@ public class ReceitaApplicationService implements ReceitaService {
         List<Receita> receitas = receitaRepository.buscaReceitaAnual(year);
         log.info("[finaliza] ReceitaApplicationService - getReceitasAnual");
         return ReceitaListResponse.converte(receitas);
+    }
+
+    @Override
+    public void alteraReceita(UUID idReceita, ReceitaAlteracaoRequest receitaAlteracaoRequest) {
+        log.info("[inicial] ReceitaApplicationService - alteraReceita");
+        Receita receita = receitaRepository.buscaReceitaPorId(idReceita)
+                .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Receita não encontrada!"));
+        receita.altera(receitaAlteracaoRequest);
+        receitaRepository.salva(receita);
+        log.info("[finazaliza] ReceitaApplicationService - alteraReceita");
     }
 }

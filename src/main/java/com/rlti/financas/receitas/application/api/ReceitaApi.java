@@ -36,4 +36,8 @@ public interface ReceitaApi {
     @GetMapping(value = "/year")
     @ResponseStatus(code = HttpStatus.OK)
     List<ReceitaListResponse> getReceitaAnual(@RequestParam int year);
+
+    @PatchMapping(value = "/update/{idReceita}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void patchAlteraReceita(@PathVariable UUID idReceita, @Valid @RequestBody ReceitaAlteracaoRequest receitaAlteracaoRequest);
 }

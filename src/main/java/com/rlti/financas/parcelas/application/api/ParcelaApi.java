@@ -20,7 +20,7 @@ public interface ParcelaApi {
 
     @GetMapping(value = "/parcelas-despesa")
     @ResponseStatus(code = HttpStatus.OK)
-    List<ParcelaListResponse> getTodasParcelasDespesa(@RequestParam UUID idDespesa);
+    List<ParcelaListResponse> getTodasParcelasDespesa(@RequestParam Despesa despesa);
 
     @GetMapping(value = "/allParcelas")
     @ResponseStatus(code = HttpStatus.OK)

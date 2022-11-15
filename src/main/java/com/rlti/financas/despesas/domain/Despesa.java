@@ -50,7 +50,9 @@ public class Despesa {
 		this.dataPagamento = despesaRequest.getDataPagamento();
 		this.quantidadeParcelas = despesaRequest.getQuantidadeParcelas();
 		this.valorTotal = despesaRequest.getValorTotal();
+		this.parcelas = despesaRequest.getParcelas();
 	}
+
 	public void altera(@Valid DespesaAlteracaoRequest despesaAlteracaoRequest) {
 		this.descricao = despesaAlteracaoRequest.getDescricao();
 		this.categoria = despesaAlteracaoRequest.getCategoria();
