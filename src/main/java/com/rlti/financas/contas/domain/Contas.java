@@ -29,12 +29,10 @@ public class Contas {
         this.parcelas = ParcelaListResponse.converte(parcelas);
         this.receitas = ReceitaListResponse.converte(receitas);
     }
-
     public Contas(Categoria categoria, List<Parcela> parcelas) {
         this.categoria = categoria;
         this.valorTotalParcelas = somaParcelas(parcelas);
     }
-
     private double somaParcelas(List<Parcela> parcelas) {
         return parcelas.stream()
                 .mapToDouble(Parcela::getValorParcela)

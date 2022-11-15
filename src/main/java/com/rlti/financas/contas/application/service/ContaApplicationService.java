@@ -1,5 +1,6 @@
 package com.rlti.financas.contas.application.service;
 
+
 import com.rlti.financas.contas.application.api.ContasCategoriaResponse;
 import com.rlti.financas.contas.domain.Contas;
 import com.rlti.financas.despesas.domain.Categoria;
@@ -47,10 +48,8 @@ public class ContaApplicationService implements ContaService {
         log.info("[inicia] ContaApplicationService - getReceitasDespesasCategoria");
         List<Contas> contas = new ArrayList<>();
         for (Categoria categoria : Categoria.values()) {
-           // String categoriaString = String.valueOf(Categoria.valueOf (String.valueOf(categoria)));
             List<Parcela> parcelas = parcelaRepository.buscaCategoria(categoria, year);
-            if(parcelas.isEmpty()){}
-            else {
+            if(!parcelas.isEmpty()){
                 contas.add(new Contas(categoria, parcelas));
             }
         }
