@@ -15,11 +15,11 @@ import java.util.List;
 public class ContasController implements ContasApi {
     private final ContaService contaService;
     @Override
-    public Contas getSaldoPeriodo(LocalDate dataInicial, LocalDate dataFinal) {
+    public ContasResponse getSaldoPeriodo(LocalDate dataInicial, LocalDate dataFinal) {
         log.info("[inicia] ContasController - getSaldoPeriodo");
         Contas contas = contaService.listSaldo(dataInicial, dataFinal);
         log.info("[finaliza] ContasController - getSaldoPeriodo");
-        return contas;
+        return new ContasResponse(contas);
     }
 
     @Override

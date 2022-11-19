@@ -12,6 +12,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -32,7 +33,7 @@ public class Receita {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate dataReceita;
     @NotNull
-    private Double valor;
+    private BigDecimal valor;
 
     public Receita(ReceitaRequest receitaRequest){
         this.idReceita = UUID.randomUUID();

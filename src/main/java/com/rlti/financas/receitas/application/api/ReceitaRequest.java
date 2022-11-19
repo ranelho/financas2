@@ -7,6 +7,7 @@ import lombok.Value;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Value
@@ -20,5 +21,5 @@ public class ReceitaRequest {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate dataReceita;
     @NotNull
-    private Double valor;
+    private BigDecimal valor;
 }

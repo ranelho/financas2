@@ -22,7 +22,7 @@ import java.util.List;
 public class ContaApplicationService implements ContaService {
     private final ParcelaRepository parcelaRepository;
     private final ReceitaRepository receitaRepository;
-    Contas contas;
+
     @Override
     public Contas listSaldo(LocalDate dataInicial, LocalDate dataFinal) {
         log.info("[inicia] ContaApplicationService - listSaldo");
@@ -37,7 +37,7 @@ public class ContaApplicationService implements ContaService {
     public Contas listSaldoAnual(int year) {
         log.info("[inicia] ContaApplicationService - listSaldoAnual");
         List<Receita> receitas = receitaRepository.buscaReceitaAnual(year);
-        List<Parcela> parcelas = parcelaRepository.buscaParcelasAno(year);
+        List<Parcela> parcelas = parcelaRepository.buscaParcelasAnual(year);
         Contas contas = new Contas(parcelas,receitas);
         log.info("[finaliza] ContaApplicationService - listSaldoAnual");
         return contas;

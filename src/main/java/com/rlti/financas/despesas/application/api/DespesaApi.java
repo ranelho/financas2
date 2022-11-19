@@ -40,6 +40,5 @@ public interface DespesaApi {
 
     @PatchMapping(value = "/update/{idDespesa}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    void patchAlteraDespesa(@PathVariable UUID idDespesa,
-                            @Valid @RequestBody DespesaAlteracaoRequest despesaAlteracaoRequest);
+    void patchAlteraDespesa(@PathVariable UUID idDespesa, @Valid @RequestBody DespesaAlteracaoRequest despesaAlteracaoRequest);
 }

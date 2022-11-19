@@ -12,6 +12,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -32,7 +33,7 @@ public class Parcela {
     @NotNull
     private String quantidadeParcelas;
     @NotNull
-    private Double valorParcela;
+    private BigDecimal valorParcela;
     @NotNull
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate dataParcela;

@@ -1,12 +1,11 @@
 package com.rlti.financas.parcelas.application.api;
 
 import com.rlti.financas.despesas.domain.Categoria;
-import com.rlti.financas.parcelas.domain.Situacao;
-import com.rlti.financas.handler.APIException;
 import com.rlti.financas.parcelas.domain.Parcela;
+import com.rlti.financas.parcelas.domain.Situacao;
 import lombok.Value;
-import org.springframework.http.HttpStatus;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -18,7 +17,7 @@ public class ParcelaListResponse {
     private Categoria categoria;
     private String descricao;
     private String quantidadeParcelas;
-    private Double valorParcela;
+    private BigDecimal valorParcela;
     private LocalDate dataParcela;
     private Situacao situacao ;
 
@@ -33,12 +32,8 @@ public class ParcelaListResponse {
     }
 
     public static List<ParcelaListResponse> converte(List<Parcela> parcelas) {
-        if (parcelas.isEmpty()) {
-            throw APIException.build(HttpStatus.NOT_FOUND, "Nenhuma parcela econtrada!");
-        } else {
-            return parcelas.stream()
-                    .map(ParcelaListResponse::new)
-                    .collect(Collectors.toList());
-        }
+        return parcelas.stream()
+                .map(ParcelaListResponse::new)
+                .collect(Collectors.toList());
     }
 }

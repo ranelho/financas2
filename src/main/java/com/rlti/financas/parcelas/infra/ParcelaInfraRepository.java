@@ -60,7 +60,7 @@ public class ParcelaInfraRepository implements ParcelaRepository {
     }
 
     @Override
-    public List<Parcela> buscaParcelasAno(int year) {
+    public List<Parcela> buscaParcelasAnual(int year) {
         log.info("[inicia] ParcelaInfraRepository - buscaParcelasAno");
         List<Parcela> parcelas = parcelaSpringDataJPARepository.findAllYear(year);
         log.info("[inicia] ParcelaInfraRepository - buscaParcelasAno");

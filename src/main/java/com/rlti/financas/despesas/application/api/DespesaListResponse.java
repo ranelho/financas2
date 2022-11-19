@@ -7,6 +7,7 @@ import com.rlti.financas.handler.APIException;
 import lombok.Value;
 import org.springframework.http.HttpStatus;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -19,7 +20,7 @@ public class DespesaListResponse {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private LocalDate dataPagamento;
 	private int parcelas;
-	private Double valorTotal;
+	private BigDecimal valorTotal;
 	public static List<DespesaListResponse> converte(List<Despesa> despesas) {
 		if (despesas.isEmpty()) {
 			throw APIException.build(HttpStatus.NOT_FOUND, "Nenhuma tarefa econtrada!");
@@ -42,6 +43,6 @@ public class DespesaListResponse {
 		this.categoria = null;
 		this.dataPagamento = dataPagamento;
 		this.parcelas = parcela;
-		this.valorTotal = valor;
+		this.valorTotal = BigDecimal.valueOf(valor);
 	}
 }

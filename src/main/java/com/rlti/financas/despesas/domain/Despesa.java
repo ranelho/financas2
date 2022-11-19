@@ -13,6 +13,7 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -35,11 +36,10 @@ public class Despesa {
 	@NotNull
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private LocalDate dataPagamento;
-	@NotNull	
-	//@Transient
+	@NotNull
 	private int quantidadeParcelas;
 	@NotNull
-	private Double valorTotal;
+	private BigDecimal valorTotal;
 	@OneToMany(mappedBy="despesa", cascade = CascadeType.ALL)
 	private List<Parcela> parcelas;
 
@@ -52,7 +52,6 @@ public class Despesa {
 		this.valorTotal = despesaRequest.getValorTotal();
 		this.parcelas = despesaRequest.getParcelas();
 	}
-
 	public void altera(@Valid DespesaAlteracaoRequest despesaAlteracaoRequest) {
 		this.descricao = despesaAlteracaoRequest.getDescricao();
 		this.categoria = despesaAlteracaoRequest.getCategoria();

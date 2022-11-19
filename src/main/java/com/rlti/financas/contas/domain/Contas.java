@@ -9,23 +9,24 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 public class Contas {
-    private double valorTotalReceitas;
-    private double valorTotalParcelas;
+    private BigDecimal valorTotalReceitas;
+    private BigDecimal valorTotalParcelas;
     private Categoria categoria;
-    private double saldo;
+    private BigDecimal saldoGeral;
     private List<ParcelaListResponse> parcelas;
     private List<ReceitaListResponse> receitas;
 
     public Contas(List<Parcela> parcelas, List<Receita> receitas) {
         this.valorTotalReceitas = somaReceitas(receitas);
         this.valorTotalParcelas = somaParcelas(parcelas);
-        this.saldo = valorTotalReceitas - valorTotalParcelas;
+        this.saldoGeral = valorTotalReceitas.subtract(valorTotalParcelas);
         this.parcelas = ParcelaListResponse.converte(parcelas);
         this.receitas = ReceitaListResponse.converte(receitas);
     }
@@ -33,14 +34,16 @@ public class Contas {
         this.categoria = categoria;
         this.valorTotalParcelas = somaParcelas(parcelas);
     }
-    private double somaParcelas(List<Parcela> parcelas) {
-        return parcelas.stream()
-                .mapToDouble(Parcela::getValorParcela)
-                .sum();
+    private BigDecimal somaParcelas(List<Parcela> parcelas){
+        return parcelas
+               .stream()
+               .map(Parcela::getValorParcela)
+               .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
-    private double somaReceitas(List<Receita> receitas) {
-        return receitas.stream()
-                .mapToDouble(Receita::getValor)
-                .sum();
+    private BigDecimal somaReceitas(List<Receita> receitas){
+        return receitas
+               .stream()
+               .map(Receita::getValor)
+               .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }

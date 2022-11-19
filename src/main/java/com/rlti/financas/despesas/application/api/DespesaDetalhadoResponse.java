@@ -4,6 +4,7 @@ import com.rlti.financas.despesas.domain.Categoria;
 import com.rlti.financas.despesas.domain.Despesa;
 import lombok.Value;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Value
@@ -11,7 +12,7 @@ public class DespesaDetalhadoResponse {
 	private UUID idDespesa;
 	private Categoria categoria;
 	private int quantidadeParcelas;
-	private Double valorTotal;
+	private BigDecimal valorTotal;
 	
 	public DespesaDetalhadoResponse(Despesa despesa) {
 		this.idDespesa = despesa.getIdDespesa();

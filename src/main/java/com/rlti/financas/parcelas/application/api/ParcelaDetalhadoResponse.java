@@ -4,13 +4,14 @@ import com.rlti.financas.parcelas.domain.Parcela;
 import com.rlti.financas.parcelas.domain.Situacao;
 import lombok.Value;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Value
 public class ParcelaDetalhadoResponse {
     private String descricao;
     private String quantidadeParcelas;
-    private Double valorParcela;
+    private BigDecimal valorParcela;
     private LocalDate dataParcela;
     private Situacao situacao ;
 

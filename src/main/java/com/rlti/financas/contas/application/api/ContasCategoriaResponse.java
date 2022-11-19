@@ -4,12 +4,13 @@ import com.rlti.financas.contas.domain.Contas;
 import com.rlti.financas.despesas.domain.Categoria;
 import lombok.Value;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Value
 public class ContasCategoriaResponse {
-    private double valorTotalParcelas;
+    private BigDecimal valorTotalParcelas;
     private Categoria categoria;
 
     public ContasCategoriaResponse(Contas contas){

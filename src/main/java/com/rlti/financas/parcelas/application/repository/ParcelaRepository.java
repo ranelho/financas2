@@ -15,6 +15,6 @@ public interface ParcelaRepository {
     List<Parcela> buscaParcelas();
     Optional<Parcela> getParcela(UUID idParcela);
     List<Parcela> buscaParcelasPeriodo(LocalDate dataInicial, LocalDate dataFinal);
-    List<Parcela> buscaParcelasAno(int year);
+    List<Parcela> buscaParcelasAnual(int year);
     List<Parcela> buscaCategoria(Categoria categoria, int year);
 }

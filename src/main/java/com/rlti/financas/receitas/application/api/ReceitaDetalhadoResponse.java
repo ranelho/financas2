@@ -4,6 +4,7 @@ import com.rlti.financas.despesas.domain.Categoria;
 import com.rlti.financas.receitas.domain.Receita;
 import lombok.Value;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -13,7 +14,7 @@ public class ReceitaDetalhadoResponse {
     private String descricao;
     private Categoria categoria;
     private LocalDate dataReceita;
-    private Double valor;
+    private BigDecimal valor;
 
     public  ReceitaDetalhadoResponse(Receita receita){
         this.idReceita = receita.getIdReceita();

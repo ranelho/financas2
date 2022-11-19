@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -32,7 +33,7 @@ public class DespesaApplicationService implements DespesaService {
 	public DespesaResponse criaDespesa(DespesaRequest despesaRequest, ParcelaRequest parcelaRequest) {
 		log.info("[inicia] - DespesaApplicationService - criaDespesa");
 		Despesa despesa = despesaRepository.salva(new Despesa(despesaRequest));
-		double valorParcela = despesaRequest.getValorTotal() / despesaRequest.getQuantidadeParcelas();
+		BigDecimal valorParcela = despesaRequest.getValorTotal().divide(BigDecimal.valueOf(despesaRequest.getQuantidadeParcelas()));
 		for (int count = 1; count <= despesaRequest.getQuantidadeParcelas(); count++) {
 			String statusParcela = count + "/" + despesaRequest.getQuantidadeParcelas();
 			parcelaRequest.setCategoria(despesa.getCategoria());

@@ -13,7 +13,7 @@ import java.util.List;
 public interface ContasApi {
     @GetMapping(value = "/saldo/{dataInicial},{dataFinal}")
     @ResponseStatus(code = HttpStatus.OK)
-    Contas getSaldoPeriodo(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataInicial,
+    ContasResponse getSaldoPeriodo(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataInicial,
                            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataFinal);
 
     @GetMapping(value = "/year")
