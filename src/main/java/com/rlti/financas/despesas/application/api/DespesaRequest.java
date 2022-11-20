@@ -11,12 +11,13 @@ import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class DespesaRequest {
-//	private UUID idDespesa;
+	private UUID idDespesa;
 	private Categoria categoria;
 	@Size(message = "Campo descrição tarefa não pode estar vazio", min = 3, max = 255)
 	private String descricao;

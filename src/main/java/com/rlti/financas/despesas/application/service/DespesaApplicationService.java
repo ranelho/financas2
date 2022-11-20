@@ -1,6 +1,5 @@
 package com.rlti.financas.despesas.application.service;
 
-import com.rlti.financas.despesas.application.api.DespesaAlteracaoRequest;
 import com.rlti.financas.despesas.application.api.DespesaListResponse;
 import com.rlti.financas.despesas.application.api.DespesaRequest;
 import com.rlti.financas.despesas.application.api.DespesaResponse;
@@ -68,12 +67,16 @@ public class DespesaApplicationService implements DespesaService {
 	}
 
 	@Override
-	public void patchAlteraDespesa(UUID idDespesa, @Valid DespesaAlteracaoRequest despesaAlteracaoRequest) {
+	public void patchAlteraDespesa(UUID idDespesa, @Valid DespesaRequest despesaRequest, ParcelaRequest parcelaRequest) {
 		log.info("[inicia] - DespesaApplicationService - patchAlteraDespesa");
-		Despesa despesas = despesaRepository.buscaDespesaPorId(idDespesa)
+		log.info("{}",idDespesa);
+		/*Despesa despesas = despesaRepository.buscaDespesaPorId(idDespesa)
 				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Despesa não encontrada!"));
-		despesas.altera(despesaAlteracaoRequest);
-		despesaRepository.salva(despesas);
+		despesas.altera(despesaRequest);
+		despesaRepository.salva(despesas);*/
+		deletaDespesaAtravesId(idDespesa);
+		despesaRequest.setIdDespesa(idDespesa);
+		criaDespesa(despesaRequest,parcelaRequest);
 		log.info("[finaliza] - DespesaApplicationService - patchAlteraDespesa");
 	}
 
