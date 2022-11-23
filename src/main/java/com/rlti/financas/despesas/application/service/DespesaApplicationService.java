@@ -69,11 +69,6 @@ public class DespesaApplicationService implements DespesaService {
 	@Override
 	public void patchAlteraDespesa(UUID idDespesa, @Valid DespesaRequest despesaRequest, ParcelaRequest parcelaRequest) {
 		log.info("[inicia] - DespesaApplicationService - patchAlteraDespesa");
-		log.info("{}",idDespesa);
-		/*Despesa despesas = despesaRepository.buscaDespesaPorId(idDespesa)
-				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Despesa não encontrada!"));
-		despesas.altera(despesaRequest);
-		despesaRepository.salva(despesas);*/
 		deletaDespesaAtravesId(idDespesa);
 		despesaRequest.setIdDespesa(idDespesa);
 		criaDespesa(despesaRequest,parcelaRequest);

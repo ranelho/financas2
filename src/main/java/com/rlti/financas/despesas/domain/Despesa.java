@@ -24,7 +24,7 @@ public class Despesa {
 	@Id
 	@Column(name = "idDespesa", updatable = false, nullable = false, columnDefinition = "VARCHAR(36)")
 	@Type(type = "uuid-char")
-	private UUID idDespesa;
+	private UUID idDespesa = null;
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Categoria categoria;
@@ -40,8 +40,8 @@ public class Despesa {
 	@OneToMany(mappedBy="despesa", cascade = CascadeType.ALL)
 	private List<Parcela> parcelas;
 
-	public Despesa(@org.jetbrains.annotations.NotNull DespesaRequest despesaRequest) {
-		if (despesaRequest.getIdDespesa().equals(null)) {
+	public Despesa(DespesaRequest despesaRequest) {
+		if (despesaRequest.getIdDespesa() == null) {
 			this.idDespesa = UUID.randomUUID();
 		}else {
 			this.idDespesa = despesaRequest.getIdDespesa();

@@ -19,7 +19,7 @@ import java.util.UUID;
 public class DespesaRequest {
 	private UUID idDespesa;
 	private Categoria categoria;
-	@Size(message = "Campo descrição tarefa não pode estar vazio", min = 3, max = 255)
+	@Size(message = "Campo descrição não pode estar vazio", min = 3, max = 255)
 	private String descricao;
 	@NotNull
 	private LocalDate dataPagamento;
