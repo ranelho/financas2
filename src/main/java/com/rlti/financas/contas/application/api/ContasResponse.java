@@ -1,7 +1,7 @@
 package com.rlti.financas.contas.application.api;
 
 import com.rlti.financas.contas.domain.Contas;
-import com.rlti.financas.parcelas.application.api.ParcelaListResponse;
+import com.rlti.financas.despesas.application.api.parcela.ParcelaListResponse;
 import com.rlti.financas.receitas.application.api.ReceitaListResponse;
 import lombok.Value;
 

@@ -1,8 +1,7 @@
 package com.rlti.financas.despesas.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.rlti.financas.despesas.application.api.DespesaRequest;
-import com.rlti.financas.parcelas.domain.Parcela;
+import com.rlti.financas.despesas.application.api.despesa.DespesaRequest;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

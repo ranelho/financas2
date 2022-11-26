@@ -1,8 +1,8 @@
 package com.rlti.financas.contas.domain;
 
 import com.rlti.financas.despesas.domain.Categoria;
-import com.rlti.financas.parcelas.application.api.ParcelaListResponse;
-import com.rlti.financas.parcelas.domain.Parcela;
+import com.rlti.financas.despesas.application.api.parcela.ParcelaListResponse;
+import com.rlti.financas.despesas.domain.Parcela;
 import com.rlti.financas.receitas.application.api.ReceitaListResponse;
 import com.rlti.financas.receitas.domain.Receita;
 import lombok.AllArgsConstructor;

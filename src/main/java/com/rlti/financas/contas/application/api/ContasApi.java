@@ -11,12 +11,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/v2/contas")
 public interface ContasApi {
-    @GetMapping(value = "/saldo/{dataInicial},{dataFinal}")
+    @GetMapping(value = "/saldoPeriodo/{dataInicial},{dataFinal}")
     @ResponseStatus(code = HttpStatus.OK)
     ContasResponse getSaldoPeriodo(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataInicial,
                            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataFinal);
 
-    @GetMapping(value = "/year")
+    @GetMapping(value = "/saldoAnual")
     @ResponseStatus(code = HttpStatus.OK)
     Contas getSaldoAnual(@RequestParam int year);
 
