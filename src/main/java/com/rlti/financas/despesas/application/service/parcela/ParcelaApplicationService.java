@@ -1,13 +1,13 @@
-package com.rlti.financas.parcelas.application.service;
+package com.rlti.financas.despesas.application.service.parcela;
 
 import com.rlti.financas.despesas.domain.Categoria;
 import com.rlti.financas.despesas.domain.Despesa;
 import com.rlti.financas.handler.APIException;
-import com.rlti.financas.parcelas.application.api.ParcelaIdResponse;
-import com.rlti.financas.parcelas.application.api.ParcelaListResponse;
-import com.rlti.financas.parcelas.application.api.ParcelaRequest;
-import com.rlti.financas.parcelas.application.repository.ParcelaRepository;
-import com.rlti.financas.parcelas.domain.Parcela;
+import com.rlti.financas.despesas.application.api.parcela.ParcelaIdResponse;
+import com.rlti.financas.despesas.application.api.parcela.ParcelaListResponse;
+import com.rlti.financas.despesas.application.api.parcela.ParcelaRequest;
+import com.rlti.financas.despesas.application.repository.parcela.ParcelaRepository;
+import com.rlti.financas.despesas.domain.Parcela;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;

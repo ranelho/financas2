@@ -1,8 +1,8 @@
-package com.rlti.financas.despesas.application.api;
+package com.rlti.financas.despesas.application.api.despesa;
 
-import com.rlti.financas.despesas.application.service.DespesaService;
+import com.rlti.financas.despesas.application.service.despesa.DespesaService;
 import com.rlti.financas.despesas.domain.Despesa;
-import com.rlti.financas.parcelas.application.api.ParcelaRequest;
+import com.rlti.financas.despesas.application.api.parcela.ParcelaRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;

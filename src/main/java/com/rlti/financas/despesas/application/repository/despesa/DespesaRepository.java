@@ -1,4 +1,4 @@
-package com.rlti.financas.despesas.application.repository;
+package com.rlti.financas.despesas.application.repository.despesa;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -6,7 +6,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 import com.rlti.financas.despesas.domain.Despesa;
-import com.rlti.financas.parcelas.domain.Parcela;
 
 public interface DespesaRepository {
 	Despesa salva(Despesa despesa);

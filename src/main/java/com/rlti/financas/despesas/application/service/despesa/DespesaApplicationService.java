@@ -1,15 +1,15 @@
-package com.rlti.financas.despesas.application.service;
+package com.rlti.financas.despesas.application.service.despesa;
 
-import com.rlti.financas.despesas.application.api.DespesaListResponse;
-import com.rlti.financas.despesas.application.api.DespesaRequest;
-import com.rlti.financas.despesas.application.api.DespesaResponse;
-import com.rlti.financas.despesas.application.repository.DespesaRepository;
+import com.rlti.financas.despesas.application.api.despesa.DespesaListResponse;
+import com.rlti.financas.despesas.application.api.despesa.DespesaRequest;
+import com.rlti.financas.despesas.application.api.despesa.DespesaResponse;
+import com.rlti.financas.despesas.application.api.parcela.ParcelaRequest;
+import com.rlti.financas.despesas.application.repository.despesa.DespesaRepository;
+import com.rlti.financas.despesas.application.repository.parcela.ParcelaRepository;
 import com.rlti.financas.despesas.domain.Despesa;
+import com.rlti.financas.despesas.domain.Parcela;
 import com.rlti.financas.despesas.domain.ValidaMes;
 import com.rlti.financas.handler.APIException;
-import com.rlti.financas.parcelas.application.api.ParcelaRequest;
-import com.rlti.financas.parcelas.application.repository.ParcelaRepository;
-import com.rlti.financas.parcelas.domain.Parcela;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,21 +28,24 @@ import java.util.UUID;
 public class DespesaApplicationService implements DespesaService {
 	private final DespesaRepository despesaRepository;
 	private final ParcelaRepository parcelaRepository;
-
+	List<Parcela> parcelas = new ArrayList<>();
+	String quantidadeParcelas;
+	BigDecimal valorParcela;
 	@Override
 	public DespesaResponse criaDespesa(DespesaRequest despesaRequest, ParcelaRequest parcelaRequest) {
 		log.info("[inicia] - DespesaApplicationService - criaDespesa");
 		Despesa despesa = despesaRepository.salva(new Despesa(despesaRequest));
-		BigDecimal valorParcela = despesaRequest.getValorTotal().divide(BigDecimal.valueOf(despesaRequest.getQuantidadeParcelas()));
+		valorParcela = despesaRequest.getValorTotal().divide(BigDecimal.valueOf(despesaRequest.getQuantidadeParcelas()));
 		for (int count = 1; count <= despesaRequest.getQuantidadeParcelas(); count++) {
-			String statusParcela = count + "/" + despesaRequest.getQuantidadeParcelas();
+			quantidadeParcelas = count + "/" + despesaRequest.getQuantidadeParcelas();
 			parcelaRequest.setCategoria(despesa.getCategoria());
 			parcelaRequest.setValorParcela(valorParcela);
 			parcelaRequest.setDataParcela(ValidaMes.validaMes(despesaRequest.getDataPagamento(), count));
 			parcelaRequest.setDescricao(despesaRequest.getDescricao());
-			parcelaRequest.setQuantidadeParcelas(statusParcela);
-			parcelaRepository.salva(new Parcela(despesa,parcelaRequest));
+			parcelaRequest.setQuantidadeParcelas(quantidadeParcelas);
+			parcelas.add(new Parcela(despesa, parcelaRequest));
 		}
+		parcelaRepository.salvaParcelas(parcelas);
 		log.info("[finaliza] - DespesaApplicationService - criaDespesa");
 		return DespesaResponse.builder().idDespesa(despesa.getIdDespesa()).build();
 	}

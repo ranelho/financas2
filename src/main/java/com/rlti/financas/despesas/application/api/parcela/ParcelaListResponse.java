@@ -1,8 +1,8 @@
-package com.rlti.financas.parcelas.application.api;
+package com.rlti.financas.despesas.application.api.parcela;
 
 import com.rlti.financas.despesas.domain.Categoria;
-import com.rlti.financas.parcelas.domain.Parcela;
-import com.rlti.financas.parcelas.domain.Situacao;
+import com.rlti.financas.despesas.domain.Parcela;
+import com.rlti.financas.despesas.domain.Situacao;
 import lombok.Value;
 
 import java.math.BigDecimal;

@@ -1,4 +1,4 @@
-package com.rlti.financas.parcelas.application.api;
+package com.rlti.financas.despesas.application.api.parcela;
 
 import lombok.Builder;
 import lombok.Value;

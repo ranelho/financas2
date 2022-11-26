@@ -1,9 +1,9 @@
-package com.rlti.financas.parcelas.infra;
+package com.rlti.financas.despesas.infra.parcela;
 
 import com.rlti.financas.despesas.domain.Categoria;
 import com.rlti.financas.despesas.domain.Despesa;
-import com.rlti.financas.parcelas.application.repository.ParcelaRepository;
-import com.rlti.financas.parcelas.domain.Parcela;
+import com.rlti.financas.despesas.application.repository.parcela.ParcelaRepository;
+import com.rlti.financas.despesas.domain.Parcela;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
@@ -74,5 +74,12 @@ public class ParcelaInfraRepository implements ParcelaRepository {
         List<Parcela> parcela = parcelaSpringDataJPARepository.findAllCategoria(categoriaString, year);
         log.info("[finaliza] ParcelaInfraRepository - buscaSomaCategoria");
         return parcela;
+    }
+
+    @Override
+    public void salvaParcelas(List<Parcela> parcelas) {
+        log.info("[inicia] ParcelaInfraRepository - salvaParcelas");
+        parcelaSpringDataJPARepository.saveAll(parcelas);
+        log.info("[finaliza] ParcelaInfraRepository - salvaParcelas");
     }
 }

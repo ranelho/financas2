@@ -1,11 +1,11 @@
-package com.rlti.financas.parcelas.application.service;
+package com.rlti.financas.despesas.application.service.parcela;
 
 import com.rlti.financas.despesas.domain.Categoria;
 import com.rlti.financas.despesas.domain.Despesa;
-import com.rlti.financas.parcelas.application.api.ParcelaIdResponse;
-import com.rlti.financas.parcelas.application.api.ParcelaListResponse;
-import com.rlti.financas.parcelas.application.api.ParcelaRequest;
-import com.rlti.financas.parcelas.domain.Parcela;
+import com.rlti.financas.despesas.application.api.parcela.ParcelaIdResponse;
+import com.rlti.financas.despesas.application.api.parcela.ParcelaListResponse;
+import com.rlti.financas.despesas.application.api.parcela.ParcelaRequest;
+import com.rlti.financas.despesas.domain.Parcela;
 
 import java.time.LocalDate;
 import java.util.List;

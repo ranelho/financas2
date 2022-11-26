@@ -1,4 +1,4 @@
-package com.rlti.financas.parcelas.application.api;
+package com.rlti.financas.despesas.application.api.parcela;
 
 import com.rlti.financas.despesas.domain.Categoria;
 import com.rlti.financas.despesas.domain.Despesa;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/v2/parcelas")
+@RequestMapping("/v2/despesa/parcelas")
 public interface ParcelaApi {
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)

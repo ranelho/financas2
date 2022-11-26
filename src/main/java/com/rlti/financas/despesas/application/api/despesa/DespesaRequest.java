@@ -1,7 +1,7 @@
-package com.rlti.financas.despesas.application.api;
+package com.rlti.financas.despesas.application.api.despesa;
 
 import com.rlti.financas.despesas.domain.Categoria;
-import com.rlti.financas.parcelas.domain.Parcela;
+import com.rlti.financas.despesas.domain.Parcela;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

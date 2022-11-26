@@ -1,4 +1,4 @@
-package com.rlti.financas.despesas.application.api;
+package com.rlti.financas.despesas.application.api.despesa;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.rlti.financas.despesas.domain.Categoria;

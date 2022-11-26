@@ -1,4 +1,4 @@
-package com.rlti.financas.despesas.infra;
+package com.rlti.financas.despesas.infra.despesa;
 
 import java.time.LocalDate;
 import java.util.List;

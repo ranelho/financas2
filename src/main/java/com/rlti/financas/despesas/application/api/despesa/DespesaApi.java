@@ -1,6 +1,6 @@
-package com.rlti.financas.despesas.application.api;
+package com.rlti.financas.despesas.application.api.despesa;
 
-import com.rlti.financas.parcelas.application.api.ParcelaRequest;
+import com.rlti.financas.despesas.application.api.parcela.ParcelaRequest;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

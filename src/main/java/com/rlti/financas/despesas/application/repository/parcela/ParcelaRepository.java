@@ -1,8 +1,8 @@
-package com.rlti.financas.parcelas.application.repository;
+package com.rlti.financas.despesas.application.repository.parcela;
 
 import com.rlti.financas.despesas.domain.Categoria;
 import com.rlti.financas.despesas.domain.Despesa;
-import com.rlti.financas.parcelas.domain.Parcela;
+import com.rlti.financas.despesas.domain.Parcela;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -17,4 +17,5 @@ public interface ParcelaRepository {
     List<Parcela> buscaParcelasPeriodo(LocalDate dataInicial, LocalDate dataFinal);
     List<Parcela> buscaParcelasAnual(int year);
     List<Parcela> buscaCategoria(Categoria categoria, int year);
+    void salvaParcelas(List<Parcela> parcelas);
 }

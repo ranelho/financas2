@@ -1,10 +1,10 @@
-package com.rlti.financas.despesas.application.service;
+package com.rlti.financas.despesas.application.service.despesa;
 
-import com.rlti.financas.despesas.application.api.DespesaListResponse;
-import com.rlti.financas.despesas.application.api.DespesaRequest;
-import com.rlti.financas.despesas.application.api.DespesaResponse;
+import com.rlti.financas.despesas.application.api.despesa.DespesaListResponse;
+import com.rlti.financas.despesas.application.api.despesa.DespesaRequest;
+import com.rlti.financas.despesas.application.api.despesa.DespesaResponse;
 import com.rlti.financas.despesas.domain.Despesa;
-import com.rlti.financas.parcelas.application.api.ParcelaRequest;
+import com.rlti.financas.despesas.application.api.parcela.ParcelaRequest;
 
 import javax.validation.Valid;
 import java.time.LocalDate;

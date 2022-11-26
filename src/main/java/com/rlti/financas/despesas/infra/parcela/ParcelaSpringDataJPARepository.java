@@ -1,7 +1,7 @@
-package com.rlti.financas.parcelas.infra;
+package com.rlti.financas.despesas.infra.parcela;
 
 import com.rlti.financas.despesas.domain.Despesa;
-import com.rlti.financas.parcelas.domain.Parcela;
+import com.rlti.financas.despesas.domain.Parcela;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

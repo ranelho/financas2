@@ -1,4 +1,4 @@
-package com.rlti.financas.despesas.infra;
+package com.rlti.financas.despesas.infra.despesa;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
-import com.rlti.financas.despesas.application.repository.DespesaRepository;
+import com.rlti.financas.despesas.application.repository.despesa.DespesaRepository;
 import com.rlti.financas.despesas.domain.Despesa;
 
 import lombok.RequiredArgsConstructor;
