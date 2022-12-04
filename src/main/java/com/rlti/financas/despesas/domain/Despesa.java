@@ -6,6 +6,8 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -37,6 +39,7 @@ public class Despesa {
 	@NotNull
 	private BigDecimal valorTotal;
 	@OneToMany(mappedBy="despesa", cascade = CascadeType.ALL)
+	@Fetch(FetchMode.JOIN)
 	private List<Parcela> parcelas;
 
 	public Despesa(DespesaRequest despesaRequest) {

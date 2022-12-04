@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/v2/despesa/parcelas")
+@RequestMapping("/v2/despesa/parcela")
 public interface ParcelaApi {
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
@@ -22,7 +22,7 @@ public interface ParcelaApi {
     @ResponseStatus(code = HttpStatus.OK)
     List<ParcelaListResponse> getTodasParcelasDespesa(@RequestParam Despesa despesa);
 
-    @GetMapping(value = "/allParcelas")
+    @GetMapping(value = "/allByParcela")
     @ResponseStatus(code = HttpStatus.OK)
     List<ParcelaListResponse> getTodasParcelas();
 
