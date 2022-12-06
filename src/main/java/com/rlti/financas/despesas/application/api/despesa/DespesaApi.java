@@ -27,12 +27,14 @@ public interface DespesaApi {
 
     @GetMapping(value = "/dataPagamento/{dataPagamento}")
     @ResponseStatus(code = HttpStatus.OK)
-    List<DespesaListResponse> getDespesasPorData(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataPagamento);
+    List<DespesaListResponse> getDespesasPorData(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd")
+                                                 LocalDate dataPagamento);
 
     @GetMapping(value = "/periodo/{dataInicial},{dataFinal}")
     @ResponseStatus(code = HttpStatus.OK)
-    List<DespesaListResponse> getDespesasPorPeriodo(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataInicial,
-                                                    @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataFinal);
+    List<DespesaListResponse> getDespesasPorPeriodo(
+            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataInicial,
+            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataFinal);
 
     @DeleteMapping(value = "/deleteDespesa")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
@@ -40,5 +42,6 @@ public interface DespesaApi {
 
     @PatchMapping(value = "/update/{idDespesa}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    void patchAlteraDespesa(@PathVariable UUID idDespesa, @Valid @RequestBody DespesaRequest despesaRequest, ParcelaRequest parcelaRequest);
+    void patchAlteraDespesa(@PathVariable UUID idDespesa,
+                            @Valid @RequestBody DespesaRequest despesaRequest, ParcelaRequest parcelaRequest);
 }
