@@ -17,7 +17,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
 @Entity
 public class Receita {

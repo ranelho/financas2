@@ -40,11 +40,11 @@ public class ReceitaRestController implements ReceitaApi {
     }
 
     @Override
-    public ReceitaDetalhadoResponse detalhaReceita(UUID idReceita) {
+    public ReceitaResponse findReceitaId(UUID idReceita) {
         log.info("[incicia] ReceitaRestController - detalhaReceita");
         Receita receita = receitaService.detalhaReceita(idReceita);
         log.info("[finaliza] ReceitaRestController - detalhaReceita");
-        return new ReceitaDetalhadoResponse(receita);
+        return new ReceitaResponse(receita);
     }
 
     @Override

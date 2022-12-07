@@ -26,7 +26,7 @@ public interface ReceitaApi {
 
     @GetMapping("detalha-receita/{idReceita}")
     @ResponseStatus(code = HttpStatus.OK)
-    ReceitaDetalhadoResponse detalhaReceita(@PathVariable UUID idReceita);
+    ReceitaResponse findReceitaId(@PathVariable UUID idReceita);
 
     @GetMapping(value = "/periodo/{dataInicial},{dataFinal}")
     @ResponseStatus(code = HttpStatus.OK)

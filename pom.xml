@@ -63,8 +63,13 @@
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>${spring-doc.version}</version>
 		</dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-	</dependencies>
+    </dependencies>
 
 	<build>
 		<plugins>
