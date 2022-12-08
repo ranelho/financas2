@@ -1,12 +1,11 @@
 package com.rlti.financas.handler;
 
-import java.util.Optional;
-
+import lombok.Getter;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import lombok.Getter;
-import lombok.extern.log4j.Log4j2;
+import java.util.Optional;
 
 @Getter
 @Log4j2
@@ -40,8 +39,6 @@ public class APIException extends RuntimeException {
 	private static String getMessageCause(Exception e) {
 		return e.getCause() != null ? e.getCause().getMessage() : e.getMessage();
 	}
-	
-	
 
 	public ResponseEntity<ErrorApiResponse> buildErrorResponseEntity() {
 		return ResponseEntity

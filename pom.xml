@@ -15,6 +15,7 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
+		<spring-doc.version>1.6.13</spring-doc.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -56,6 +57,18 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
+
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>${spring-doc.version}</version>
+		</dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
 	<build>

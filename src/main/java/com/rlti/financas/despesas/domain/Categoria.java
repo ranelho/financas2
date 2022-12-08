@@ -17,4 +17,5 @@ public enum Categoria {
     RECEITA,
     MOBILIÁRIO,
     ELETRODOMÉSTICOS;
+
 }
