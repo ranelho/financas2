@@ -38,7 +38,7 @@ public class Receita {
     public Receita(ReceitaRequest receitaRequest){
         this.idReceita = UUID.randomUUID();
         this.descricao = receitaRequest.getDescricao();
-        this.categoria = receitaRequest.getCategoria();
+        this.categoria = Categoria.RECEITA;
         this.dataReceita = receitaRequest.getDataReceita();
         this.valor = receitaRequest.getValor();
     }
