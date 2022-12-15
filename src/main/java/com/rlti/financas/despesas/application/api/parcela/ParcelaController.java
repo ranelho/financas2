@@ -1,5 +1,6 @@
 package com.rlti.financas.despesas.application.api.parcela;
 
+import com.rlti.financas.despesas.application.service.despesa.DespesaService;
 import com.rlti.financas.despesas.domain.Categoria;
 import com.rlti.financas.despesas.domain.Despesa;
 import com.rlti.financas.despesas.application.service.parcela.ParcelaService;
@@ -17,6 +18,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ParcelaController implements ParcelaApi {
     private final ParcelaService parcelaService;
+    private final DespesaService despesaService;
 
     @Override
     public ParcelaIdResponse postParcela(Despesa despesa, ParcelaRequest parcelaRequest) {

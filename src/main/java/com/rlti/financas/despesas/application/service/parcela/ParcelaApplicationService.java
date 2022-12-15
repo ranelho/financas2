@@ -1,13 +1,14 @@
 package com.rlti.financas.despesas.application.service.parcela;
 
-import com.rlti.financas.despesas.domain.Categoria;
-import com.rlti.financas.despesas.domain.Despesa;
-import com.rlti.financas.handler.APIException;
 import com.rlti.financas.despesas.application.api.parcela.ParcelaIdResponse;
 import com.rlti.financas.despesas.application.api.parcela.ParcelaListResponse;
 import com.rlti.financas.despesas.application.api.parcela.ParcelaRequest;
+import com.rlti.financas.despesas.application.repository.despesa.DespesaRepository;
 import com.rlti.financas.despesas.application.repository.parcela.ParcelaRepository;
+import com.rlti.financas.despesas.domain.Categoria;
+import com.rlti.financas.despesas.domain.Despesa;
 import com.rlti.financas.despesas.domain.Parcela;
+import com.rlti.financas.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ParcelaApplicationService implements ParcelaService {
     private final ParcelaRepository parcelaRepository;
-   // private final DespesaRepository despesaRepository;
+    private final DespesaRepository despesaRepository;
 
     @Override
     public ParcelaIdResponse criarParcela(Despesa despesa, ParcelaRequest parcelaRequest) {
@@ -35,6 +36,7 @@ public class ParcelaApplicationService implements ParcelaService {
     @Override
     public List<ParcelaListResponse> getParcelasDespesa(Despesa despesa) {
         log.info("[inicia] ParcelaApplicationService - getparcelasDespesaPorId");
+        //TODO: VALIDAR DESPESA
         List<Parcela> parcelas = parcelaRepository.buscaParcelasDespesa(despesa);
         log.info("[finalzia] ParcelaApplicationService - getparcelasDespesaPorId");
         return ParcelaListResponse.converte(parcelas);

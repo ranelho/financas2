@@ -70,8 +70,7 @@ public class ParcelaInfraRepository implements ParcelaRepository {
     @Override
     public List<Parcela> buscaCategoria(Categoria categoria, int year) {
         log.info("[inicia] ParcelaInfraRepository - buscaSomaCategoria");
-        String categoriaString = String.valueOf(Categoria.valueOf (String.valueOf(categoria)));
-        List<Parcela> parcela = parcelaSpringDataJPARepository.findAllCategoria(categoriaString, year);
+        List<Parcela> parcela = parcelaSpringDataJPARepository.findAllCategoria(categoria, year);
         log.info("[finaliza] ParcelaInfraRepository - buscaSomaCategoria");
         return parcela;
     }

@@ -1,20 +1,18 @@
 package com.rlti.financas.despesas.infra.despesa;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-
+import com.rlti.financas.despesas.domain.Despesa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.rlti.financas.despesas.domain.Despesa;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.UUID;
 
 public interface DespesaSpringDataJPARepository extends JpaRepository<Despesa, UUID>{
-	@Query(value = "SELECT * FROM despesa WHERE data_pagamento = ?1 ", nativeQuery = true)	
+	@Query(value = "SELECT d FROM Despesa d WHERE d.dataPagamento = ?1 ")
 	List<Despesa> findAllPorDataPagamento(LocalDate dataPagamento);
 
-	@Query(value = "SELECT * FROM despesa WHERE data_pagamento >= ?1 AND data_pagamento <= ?2", nativeQuery = true)	
+	@Query(value = "SELECT d FROM Despesa d WHERE d.dataPagamento >= ?1 AND d.dataPagamento <= ?2")
 	List<Despesa> findALLPeriodo(LocalDate dataInicial, LocalDate dataFinal);
 
 }

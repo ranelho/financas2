@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ReceitaSpringDataJPARepository extends JpaRepository<Receita, UUID> {
-    @Query(value = "SELECT * FROM receita WHERE data_receita >= ?1 and data_receita <= ?2 ", nativeQuery = true)
+    @Query(value = "SELECT r FROM Receita r WHERE r.dataReceita >= ?1 AND r.dataReceita <= ?2 ")
     List<Receita> findReceitasPeriodo(LocalDate dataInicial, LocalDate dataFinal);
-    @Query(value = "SELECT * FROM receita WHERE YEAR(data_receita) = ?1 ", nativeQuery = true)
+    @Query(value = "SELECT r FROM Receita r WHERE YEAR(r.dataReceita) = ?1 ")
     List<Receita> findAllReceitaYear(int year);
 }
