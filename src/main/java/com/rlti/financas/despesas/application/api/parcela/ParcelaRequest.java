@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
@@ -23,6 +24,7 @@ public class ParcelaRequest {
     @NotNull
     private String quantidadeParcelas;
     @NotNull
+    @DecimalMin(value = "0.1", message = "Valor abaixo de: ${value}")
     private BigDecimal valorParcela;
     @NotNull
     private LocalDate dataParcela;

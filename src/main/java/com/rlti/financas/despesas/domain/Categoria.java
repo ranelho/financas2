@@ -24,16 +24,14 @@ public enum Categoria {
     MOBILIÁRIO,
     ELETRODOMÉSTICOS;
 
-
     public static Categoria validaCategoria(Categoria categoria) {
-        Optional<Categoria> optionalCategoria = Optional.ofNullable(fromValue(String.valueOf(categoria)));
+       Optional<Categoria> optionalCategoria = Optional.ofNullable(fromValue(String.valueOf(categoria)));
         if (optionalCategoria.isPresent()){
             return Categoria.valueOf(String.valueOf(categoria));
         }else{
            throw APIException.build(HttpStatus.NOT_FOUND, "Categoria não encontrada!");
         }
     }
-
     @JsonCreator
     public static Categoria fromValue(String name) {
         try {

@@ -48,7 +48,7 @@ public class Despesa {
 		}else {
 			this.idDespesa = despesaRequest.getIdDespesa();
 		}
-		this.categoria = despesaRequest.getCategoria();
+		this.categoria = Categoria.validaCategoria(despesaRequest.getCategoria());
 		this.descricao = despesaRequest.getDescricao();
 		this.dataPagamento = despesaRequest.getDataPagamento();
 		this.quantidadeParcelas = despesaRequest.getQuantidadeParcelas();
