@@ -30,11 +30,11 @@ import static org.mockito.Mockito.when;
 class ReceitaApplicationServiceTest {
 
     public static final UUID id = UUID.fromString("08012e9c-f9b1-4f7d-ab9d-40ef39e8a41d");
-    public static final String descricao = "TESTE";
+    public static final String descricao = "TESTE UNITÁRIO";
     public static final Categoria categoria = Categoria.RECEITA;
     public static final LocalDate date = LocalDate.now();
     public static final BigDecimal valor = new BigDecimal("1400");
-    public static final UUID id2 = UUID.randomUUID();
+
     @InjectMocks
     private ReceitaApplicationService service;
 
@@ -45,13 +45,13 @@ class ReceitaApplicationServiceTest {
     @Test
     void criaNovaReceitaTest() {
         ReceitaRequest receitaRequest = new ReceitaRequest(descricao, categoria, date, valor);
+        Receita receitaResponse = new Receita(id, descricao, categoria, date, valor);
 
-        when(receitaRepository.salva(new Receita(receitaRequest))).thenReturn(any());
-
+        when(receitaRepository.salva(any())).thenReturn(receitaResponse);
         ReceitaIdResponse receitaIdResponse = service.criaNovaReceita(receitaRequest);
-
         assertNotNull(receitaIdResponse);
-        assertEquals(ReceitaIdResponse.class, receitaIdResponse.getClass());
+        //assertEquals(ReceitaIdResponse.class, receitaIdResponse.getIdReceita());
+        assertEquals(id, receitaIdResponse.getIdReceita());
     }
 
     @Test
@@ -73,6 +73,9 @@ class ReceitaApplicationServiceTest {
         when(receitaRepository.buscaReceitaPorId(any(UUID.class))).thenReturn(optionalReceita);
         Receita response = service.detalhaReceita(id);
 
+        assertNotNull(response);
         assertEquals(Receita.class, response.getClass());
+        assertEquals(id, response.getIdReceita());
+        assertEquals(descricao, response.getDescricao());
     }
 }
