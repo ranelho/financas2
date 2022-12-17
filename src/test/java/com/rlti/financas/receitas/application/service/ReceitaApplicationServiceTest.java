@@ -29,23 +29,26 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 class ReceitaApplicationServiceTest {
 
+    public static final UUID id = UUID.fromString("08012e9c-f9b1-4f7d-ab9d-40ef39e8a41d");
+    public static final String descricao = "TESTE";
+    public static final Categoria categoria = Categoria.RECEITA;
+    public static final LocalDate date = LocalDate.now();
+    public static final BigDecimal valor = new BigDecimal("1400");
+    public static final UUID id2 = UUID.randomUUID();
     @InjectMocks
-    private ReceitaApplicationService classe;
+    private ReceitaApplicationService service;
 
     @Mock
     private ReceitaRepository receitaRepository;
 
-    LocalDate date = LocalDate.now();
-    public UUID id =UUID.fromString("08012e9c-f9b1-4f7d-ab9d-40ef39e8a41d");
-    public UUID id2 =UUID.fromString("08012e9c-f9b1-4f7d-ab9d-40ef39e8a41e");
 
     @Test
     void criaNovaReceitaTest() {
-        ReceitaRequest receitaRequest = new ReceitaRequest("TESTE", Categoria.RECEITA, date, new BigDecimal("2500"));
+        ReceitaRequest receitaRequest = new ReceitaRequest(descricao, categoria, date, valor);
 
         when(receitaRepository.salva(new Receita(receitaRequest))).thenReturn(any());
 
-        ReceitaIdResponse receitaIdResponse = classe.criaNovaReceita(receitaRequest);
+        ReceitaIdResponse receitaIdResponse = service.criaNovaReceita(receitaRequest);
 
         assertNotNull(receitaIdResponse);
         assertEquals(ReceitaIdResponse.class, receitaIdResponse.getClass());
@@ -53,9 +56,9 @@ class ReceitaApplicationServiceTest {
 
     @Test
     void getReceitasText() {
-        Receita receitaRequest = new Receita(id, "teste", Categoria.RECEITA, date, new BigDecimal("2500"));
-        when(receitaRepository.getReceitas()).thenReturn(List.of(receitaRequest));
-        List<ReceitaListResponse> receitaListResponse = classe.getReceitas();
+        Receita receitaResponse = new Receita(id, descricao, categoria, date, valor);
+        when(receitaRepository.getReceitas()).thenReturn(List.of(receitaResponse));
+        List<ReceitaListResponse> receitaListResponse = service.getReceitas();
         assertNotNull(receitaListResponse);
         assertEquals(1,receitaListResponse.size());
         assertEquals(ReceitaListResponse.class, receitaListResponse.get(0).getClass());
@@ -65,11 +68,11 @@ class ReceitaApplicationServiceTest {
     }
 
     @Test
-    void detalhaReceita() {
-        Optional<Receita> receitaOptional = Optional.of(new Receita());
+    void detalhaReceitaTeste() {
+        Optional<Receita> optionalReceita = Optional.of(new Receita(id ,descricao, categoria, date, valor));
+        when(receitaRepository.buscaReceitaPorId(any(UUID.class))).thenReturn(optionalReceita);
+        Receita response = service.detalhaReceita(id);
 
-        when(receitaRepository.buscaReceitaPorId(UUID.randomUUID())).thenReturn(receitaOptional);
-
+        assertEquals(Receita.class, response.getClass());
     }
-
 }
