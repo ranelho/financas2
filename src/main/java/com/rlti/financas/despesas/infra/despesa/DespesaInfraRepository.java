@@ -1,17 +1,15 @@
 package com.rlti.financas.despesas.infra.despesa;
 
+import com.rlti.financas.despesas.application.repository.despesa.DespesaRepository;
+import com.rlti.financas.despesas.domain.Despesa;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.stereotype.Repository;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-
-import org.springframework.stereotype.Repository;
-
-import com.rlti.financas.despesas.application.repository.despesa.DespesaRepository;
-import com.rlti.financas.despesas.domain.Despesa;
-
-import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 
 @Repository
 @Log4j2

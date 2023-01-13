@@ -29,7 +29,6 @@ public class ReceitaApplicationService implements ReceitaService {
         log.info("[finaliza] ReceitaApplicationService - criaNovaReceita");
         return ReceitaIdResponse.builder().idReceita(receitaCriada.getIdReceita()).build();
     }
-
     @Override
     public List<ReceitaListResponse> getReceitas() {
         log.info("[inicia] ReceitaApplicationService - getReceitas");

@@ -50,7 +50,6 @@ class ReceitaApplicationServiceTest {
         when(receitaRepository.salva(any())).thenReturn(receitaResponse);
         ReceitaIdResponse receitaIdResponse = service.criaNovaReceita(receitaRequest);
         assertNotNull(receitaIdResponse);
-        //assertEquals(ReceitaIdResponse.class, receitaIdResponse.getIdReceita());
         assertEquals(id, receitaIdResponse.getIdReceita());
     }
 

@@ -18,4 +18,5 @@ public interface ReceitaService {
     List<ReceitaListResponse> receitasPeriodo(LocalDate dataInicial, LocalDate dataFinal);
     List<ReceitaListResponse> getReceitasAnual(int year);
     void alteraReceita(UUID idReceita, ReceitaAlteracaoRequest receitaAlteracaoRequest);
+
 }

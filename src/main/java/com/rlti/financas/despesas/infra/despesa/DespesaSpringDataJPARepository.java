@@ -14,6 +14,5 @@ public interface DespesaSpringDataJPARepository extends JpaRepository<Despesa, U
 
 	@Query(value = "SELECT d FROM Despesa d WHERE d.dataPagamento >= ?1 AND d.dataPagamento <= ?2")
 	List<Despesa> findALLPeriodo(LocalDate dataInicial, LocalDate dataFinal);
-
 }
 
